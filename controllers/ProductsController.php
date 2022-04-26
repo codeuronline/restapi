@@ -4,7 +4,7 @@ require_once "models/ProductManager.php";
 
 class ProductsController{
 
-    public $productManager;
+    private $productManager;
     
     public function __construct() {
         
