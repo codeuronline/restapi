@@ -7,9 +7,7 @@ define("URL", str_replace("products.php", "", (isset($_SERVER['HTTPS']) ? "https
 
 require_once "controllers/ProductsController.php";
 
-$productController = new productsController;
-
-
+$productController = new ProductsController;
 
 try {
     //ici je fais la demande d'accès a une page
@@ -18,28 +16,28 @@ try {
         require "views/accueil.view.php";
     } else {
 
-        $url = explode("/", filter_var($_GET['page']), FILTER_SANITIZE_URL);
+        $url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
 
         switch ($url[0]) {
             case "accueil":
                 require "views/accueil.view.php";
                 break;
-            case "livres":
+            case "products":
                 if (empty($url[1])) {
-                    $livreController->afficherLivres();
+                    $productController->afficherProducts();
                 } else if ($url[1] === "l") {
                     //ici j'affiche 1seul livre
-                    $livreController->afficherLivre($url[2]);
+                    $productController->afficherProduct($url[2]);
                 } else if ($url[1] === "a") {
-                    $livreController->ajoutLivre();
+                    $productController->ajoutProduct();
                 } else if ($url[1] === "m") {
-                    $livreController->modificationLivre($url[2]);
+                    $productController->modificationProduct($url[2]);
                 } else if ($url[1] === "s") {
-                    $livreController->suppressionLivre($url[2]);
+                    $productController->suppressionProduct($url[2]);
                 } else if ($url[1] === "av") {
-                    $livreController->ajoutLivreValidation();
+                    $productController->ajoutProductValidation();
                 } else if ($url[1] === "mv") {
-                    $livreController->modificationLivreValidation();
+                    $productController->modificationProductValidation();
                 } else {
                     //ici j'utilise le throw qui permet de gérée une exception 
                     //du coup si la page n'existe pas.
@@ -49,7 +47,7 @@ try {
                 break;
                 //ici j'utilise le throw qui permet de gérée une exception 
                 //du coup si la page n'existe pas.
-            default:
+        default:
                 throw new Exception("La page n'existe pas");
         }
     }
