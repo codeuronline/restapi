@@ -26,7 +26,7 @@
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
 <!-- ici je met le nom du fichier direct dans le href, c'est donc ce que j'ai définie dans les case du fichier index.php ! Accueil-->
-                    <a class="nav-link" href="<?=URL ?>accueil">Accueil</a>
+                    <a class="nav-link" href="<?=URL ?>index">Accueil</a>
                 </li>
 
                 <li class="nav-item">
