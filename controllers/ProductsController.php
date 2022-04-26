@@ -4,8 +4,8 @@ require_once "models/ProductManager.php";
 
 class ProductsController{
 
-    private $productManager;
-     
+    public $productManager;
+    
     public function __construct() {
         
         $this->productManager= new ProductManager();
@@ -15,18 +15,23 @@ class ProductsController{
     
     public function afficherProducts(){
 
-        $products= $this->getProductManager()->getProducts();
-        var_dump("afficher tous les produits");
-        require "views/product.view.php";
+    $products= $this->getProductManager()->getProducts();
+    if (isset($products)){
+        echo 'isset';}
+        else {
+        echo 'pas définie';
+        }
+
+    require "views/product.view.php";
     }
     public function afficherProduct($id){
-     
-        $products= $this->productManager->getproductById($id);
-        require "views/afficherProduct.view.php";    
+
+    $products= $this->productManager->getproductById($id);
+    require "views/afficherProduct.view.php";    
     }
 
     public function ajoutProduct(){
-        require "views/ajoutProduct.view.php";
+    require "views/ajoutProduct.view.php";
     }    
     
     public function ajoutProductValidation(){
@@ -35,10 +40,8 @@ class ProductsController{
         $repertoire= "assets";
         //$data['photo']=$this->ajoutImage($file,$repertoire);
         $data['assets']=$this->ajoutImage($file,$repertoire);
-        var_dump($data); 
         $this->productManager->ajoutProductBd($data);
         header('Location: '.URL.'products');
-    
     }
 
     private function ajoutImage($file,$dir){

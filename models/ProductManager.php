@@ -4,7 +4,6 @@ require_once "Database.php";
 require_once "Product.php";
 
 
-
 class ProductManager extends Database{
     private $products;
 
@@ -17,15 +16,16 @@ class ProductManager extends Database{
     public function getProducts(){
         return $this->products;
     }
+    
 
-
+    //on passe ici
     public function chargementProducts(){
         $req = $this->getPDO()->prepare("SELECT * FROM products");
         $req->execute();
         $mesProducts = $req->fetchAll(PDO::FETCH_ASSOC);
         $req->closeCursor();
         foreach($mesProducts as $product){
-            var_dump("Chargement");
+            var_dump($product);
             $p = new Product($product);
             $this->ajoutProduct($p);
         }
@@ -124,7 +124,6 @@ class ProductManager extends Database{
                     $this->getProductById($id)->setPurchase_date($purchase_date);
                     $this->getProductById($id)->setExpiration_date($expiration_date);
                     $this->getProductById($id)->setPrimary_visual($primary_visual);
-
                 }   
             }
         }
