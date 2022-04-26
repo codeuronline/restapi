@@ -4,10 +4,11 @@
 define("URL", str_replace("products.php", "", (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]"));
 
 
-
 require_once "controllers/ProductsController.php";
 
+
 $productController = new ProductsController;
+
 
 try {
     //ici je fais la demande d'accès a une page
@@ -30,7 +31,7 @@ try {
                     echo "---------";
                 } else if ($url[1] === "l") {
                     //ici j'affiche 1seul livre
-                    $productController->afficherProduct($url[2]);
+                    $productController->afficherProducts($url[2]);
                 } else if ($url[1] === "a") {
                     $productController->ajoutProduct();
                 } else if ($url[1] === "m") {

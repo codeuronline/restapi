@@ -16,6 +16,12 @@ class ProductsController{
     public function afficherProducts(){
 
     $products= $this->getProductManager()->getProducts();
+    if (isset($products)){
+        echo 'isset';}
+        else {
+        echo 'pas définie';
+        }
+
     require "views/product.view.php";
     }
     public function afficherProduct($id){
@@ -34,10 +40,8 @@ class ProductsController{
         $repertoire= "assets";
         //$data['photo']=$this->ajoutImage($file,$repertoire);
         $data['assets']=$this->ajoutImage($file,$repertoire);
-        var_dump($data); 
         $this->productManager->ajoutProductBd($data);
         header('Location: '.URL.'products');
-    
     }
 
     private function ajoutImage($file,$dir){

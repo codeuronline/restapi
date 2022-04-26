@@ -26,7 +26,7 @@ var_dump($products);?>
             <!-- //$videos = $videoManager->getVideos(); -->
             <tr>
                 <td>
-                    <?=$product['id_product'] ?>
+                    <?=$product->getId_Product() ?>
                 </td>
                 <td>
                     <?=$product['primary_visual'] ?>
