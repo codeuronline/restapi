@@ -25,6 +25,7 @@ class ProductManager extends Database{
         $mesProducts = $req->fetchAll(PDO::FETCH_ASSOC);
         $req->closeCursor();
         foreach($mesProducts as $product){
+            var_dump("Chargement");
             $p = new Product($product);
             $this->ajoutProduct($p);
         }
@@ -37,11 +38,7 @@ class ProductManager extends Database{
             return $this->products[$i];
                 }
             }
-    }
-
-                    
-        
-        
+    }    
         
             public function ajoutProductBd($data){
                 extract($data);

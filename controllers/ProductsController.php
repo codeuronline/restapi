@@ -10,8 +10,6 @@ class ProductsController{
         
         $this->productManager= new ProductManager();
         $this->productManager->chargementProducts();
-
-        error_log("constructeur ");
     }
     
     
