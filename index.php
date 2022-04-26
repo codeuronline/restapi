@@ -2,10 +2,9 @@
     require_once './src/models/Product.php'; 
 $products= new Product();
 $productsAll = $products->getAll();
-var_dump($productsAll);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="FR">
 
 <head>
     <meta charset="UTF-8">
