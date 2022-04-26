@@ -3,6 +3,17 @@
 $products= new Product();
 $productsAll = $products->getAll();
 ?>
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="FR">
 
