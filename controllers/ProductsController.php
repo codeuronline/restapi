@@ -15,17 +15,17 @@ class ProductsController{
     
     public function afficherProducts(){
 
-        $products= $this->getProductManager()->getProducts();
-       require "views/product.view.php";
+    $products= $this->getProductManager()->getProducts();
+    require "views/product.view.php";
     }
     public function afficherProduct($id){
-     
-        $products= $this->productManager->getproductById($id);
-        require "views/afficherProduct.view.php";    
+
+    $products= $this->productManager->getproductById($id);
+    require "views/afficherProduct.view.php";    
     }
 
     public function ajoutProduct(){
-        require "views/ajoutProduct.view.php";
+    require "views/ajoutProduct.view.php";
     }    
     
     public function ajoutProductValidation(){

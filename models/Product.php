@@ -17,21 +17,7 @@ class Product extends Database{
         private $purchase_date;
         private $expiration_date;
         private $primary_visual;
-<<<<<<< HEAD
-        public  $data_exemple =[
-            "id_product"        => 1,
-            "code"              => 'MOD',
-            "description"       => 'Moutarde de Dijon',
-            "price"             => 225,
-            "category_id"       => 1,
-            "statut_id"         => 2,
-            "supplier_id"       => 3,
-            "purchase_date"     => "2022-04-25 12:42:42",
-            "expiration_date"   => "2023-04-01 12",
-            "primary_visual"    => ""]
-        ;
-=======
-        // public $data_exemple =[
+        // public  $data_exemple =[
         //     "id_product"        => 1,
         //     "code"              => 'MOD',
         //     "description"       => 'Moutarde de Dijon',
@@ -43,7 +29,6 @@ class Product extends Database{
         //     "expiration_date"   => "2023-04-01 12",
         //     "primary_visual"    => ""]
         // ;
->>>>>>> 5eb33149562fe67f683fbd8922cfdd5076f3cacb
                 
         public function __construct($data){
             //if (empty($data)){ $data=$this->data_exemple;}
