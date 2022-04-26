@@ -5,7 +5,7 @@ require_once "models/ProductManager.php";
 class ProductsController{
 
     private $productManager;
-     
+    
     public function __construct() {
         
         $this->productManager= new ProductManager();
@@ -17,12 +17,12 @@ class ProductsController{
     
     public function afficherProducts(){
 
-        $videos= $this->getProductManager()->getProducts();
+        $products= $this->getProductManager()->getProducts();
        require "views/product.view.php";
     }
     public function afficherProduct($id){
      
-        $video= $this->productManager->getproductById($id);
+        $products= $this->productManager->getproductById($id);
         require "views/afficherProduct.view.php";    
     }
 

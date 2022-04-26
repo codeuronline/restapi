@@ -17,7 +17,7 @@ class Product extends Database{
         private $purchase_date;
         private $expiration_date;
         private $primary_visual;
-        public $data_exemple =[
+        public  $data_exemple =[
             "id_product"        => 1,
             "code"              => 'MOD',
             "description"       => 'Moutarde de Dijon',
@@ -59,7 +59,6 @@ class Product extends Database{
         }
         return $pdo->query($sql)->fetchAll();
         }
-                  
     }    
 
     
@@ -73,7 +72,7 @@ public function setCode($code){$this->code = $code;return $this;}
 
 
 public function getDescription(){return $this->description;}
-public function setDescription($description){$this->description = $description;return$this;}
+public function setDescription($description){$this->description = $description;return $this;}
 
 public function getPrice(){return $this->price;}
 public function setPrice($price){$this->price = $price;return $this;}
