@@ -1,6 +1,6 @@
 <?php
-    require_once './src/models/Product.php'; 
-$products= new Product();
+    require_once './models/Product.php'; 
+$products= new Product([]);
 $productsAll = $products->getAll();
 ?>
 

@@ -39,12 +39,16 @@ class Product extends Database{
         $data = [];
         $db = new Product($data);
         $pdo = $db->getPDO();
+        if (empty($data)) {
+            
         if (isset($id)){ 
             $sql= "SELECT * FROM products WHERE id=$id";
         }else{
             $sql="SELECT * FROM products";
         }
-        return $pdo->query($sql)->fetchAll();          
+        return $pdo->query($sql)->fetchAll();
+        }
+
     }    
 
     
