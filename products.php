@@ -25,6 +25,7 @@ try {
             case "products":
                 if (empty($url[1])) {
                     $productController->afficherProducts();
+                    echo "---------";
                 } else if ($url[1] === "l") {
                     //ici j'affiche 1seul livre
                     $productController->afficherProduct($url[2]);
