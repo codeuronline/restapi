@@ -72,20 +72,20 @@ class ProductsController{
         }else return ($date."_".$file['name']);
     }
     public function suppressionProduct($id){
-        unlink("public/images/".$this->videoManager->getVideoById($id)->getPhoto());
-        $this->videoManager->suppressionVideoBd($id);
-        header('Location: '. URL . "videos");
+        unlink("public/images/".$this->productManager->getProductById($id)->getPhoto());
+        $this->productManager->suppressionProductBd($id);
+        header('Location: '. URL . "products");
     }
 
     public function modificationProduct($id){
-        $video = $this->videoManager->getProductById($id);
-        require "views/modifierVideo.view.php";
+        $product = $this->videoManager->getProductById($id);
+        require "views/modifierProduct.view.php";
     }
 
     public function modificationProductValidation(){
     $data= $_POST;
     //$data['id']=$data['identifiant'];
-    $imageActuelle = $this->videoManager->getProductById($_POST['id'])->getPrimary_visual();
+    $imageActuelle = $this->productManager->getProductById($_POST['id'])->getPrimary_visual();
     $file = $_FILES['photo'];
     if($file['size'] > 0){
         $repertoire = "public/images/";
@@ -95,7 +95,7 @@ class ProductsController{
         $data['photo'] = $imageActuelle;
     }
     //extract($data);
-    $this->videoManager->modificationProductBd($data);
+    $this->productManager->modificationProductBd($data);
     header('Location: '. URL . "products");
     }
 

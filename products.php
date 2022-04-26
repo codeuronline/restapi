@@ -13,11 +13,13 @@ try {
     //ici je fais la demande d'accès a une page
     if (empty($_GET['id'])) {
         echo "----1----";
+        $productController->afficherProducts();
         require "views/accueil.view.php";
     } else {
-        echo "-----2---";
+        var_dump($_GET);
+        
         $url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
-
+        var_dump($url);
         switch ($url[0]) {
             case "accueil":
                 echo "-----3---";
