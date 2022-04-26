@@ -12,18 +12,20 @@ $productController = new ProductsController;
 try {
     //ici je fais la demande d'accès a une page
     if (empty($_GET['id'])) {
-
+        echo "----1----";
         require "views/accueil.view.php";
     } else {
-
+        echo "-----2---";
         $url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
 
         switch ($url[0]) {
             case "accueil":
+                echo "-----3---";
                 require "views/accueil.view.php";
                 break;
             case "products":
                 if (empty($url[1])) {
+                    echo "----4----";
                     $productController->afficherProducts();
                     echo "---------";
                 } else if ($url[1] === "l") {
@@ -42,7 +44,7 @@ try {
                 } else {
                     //ici j'utilise le throw qui permet de gérée une exception 
                     //du coup si la page n'existe pas.
-                    throw new Exception("La page n'existe pas");
+                    throw new Exception("La page n'existe sur product pas");
                 }
 
                 break;
