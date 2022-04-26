@@ -3,8 +3,7 @@
 
 require_once 'Database.php';
 
-//je crée une class au nom de product et
-//je met des variables avec les nom de mes tables.
+
 class Product extends Database{
 
     
@@ -18,9 +17,21 @@ class Product extends Database{
         private $purchase_date;
         private $expiration_date;
         private $primary_visual;
-    
-        //extract data permet de convertir les données en variable directement
-        public function __construct($data){
+        public $data_exemple =[
+            "id_product"        => 1,
+            "code"              => 'MOD',
+            "description"       => 'Moutarde de Dijon',
+            "price"             => 225,
+            "category_id"       => 1,
+            "statut_id"         => 2,
+            "supplier_id"       => 3,
+            "purchase_date"     => "2022-04-25 12:42:42",
+            "expiration_date"   => "2023-04-01 12",
+            "primary_visual"    => ""]
+        ;
+                
+        public function __construct($data=[]){
+            if (empty($data)){ $data=$this->data_exemple;}
             extract($data);
             $this->id_product = $id_product;
             $this->$code = $code;
@@ -48,13 +59,11 @@ class Product extends Database{
         }
         return $pdo->query($sql)->fetchAll();
         }
-
+                  
     }    
 
     
-//ici je met des geter & setter
-//avec le pluging il me suffit de cliquer droit sur la variable déclarrer plus haut
-//( une a la fois !)
+
 public function getId_product(){return $this->id_product;}
 public function setId_product($id_product){$this->id_product = $id_product;return $this;}
 
@@ -97,8 +106,3 @@ public function setPrimary_visual($primary_visual){$this->primary_visual = $prim
 
 }
 ?>
-
-
-
-
-
