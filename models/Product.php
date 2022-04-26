@@ -17,9 +17,21 @@ class Product extends Database{
         private $purchase_date;
         private $expiration_date;
         private $primary_visual;
-    
-        
-        public function __construct($data){
+        public $data_exemple =[
+            "id_product"        => 1,
+            "code"              => 'MOD',
+            "description"       => 'Moutarde de Dijon',
+            "price"             => 225,
+            "category_id"       => 1,
+            "statut_id"         => 2,
+            "supplier_id"       => 3,
+            "purchase_date"     => "2022-04-25 12:42:42",
+            "expiration_date"   => "2023-04-01 12",
+            "primary_visual"    => ""]
+        ;
+                
+        public function __construct($data=[]){
+            if (empty($data)){ $data=$this->data_exemple;}
             extract($data);
             $this->id_product = $id_product;
             $this->$code = $code;
@@ -38,12 +50,16 @@ class Product extends Database{
         $data = [];
         $db = new Product($data);
         $pdo = $db->getPDO();
+        if (empty($data)) {
+            
         if (isset($id)){ 
             $sql= "SELECT * FROM products WHERE id=$id";
         }else{
             $sql="SELECT * FROM products";
         }
-        return $pdo->query($sql)->fetchAll();          
+        return $pdo->query($sql)->fetchAll();
+        }
+                  
     }    
 
     
@@ -90,5 +106,3 @@ public function setPrimary_visual($primary_visual){$this->primary_visual = $prim
 
 }
 ?>
-
-
