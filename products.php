@@ -10,54 +10,33 @@ require_once "controllers/ProductsController.php";
 $productController = new ProductsController;
 
 
-try {
-    //ici je fais la demande d'accès a une page
-    if (empty($_GET['id'])) {
-        echo "----1----";
-        require "views/accueil.view.php";
-    } else {
-        echo "-----2---";
+
         $url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
 
-        switch ($url[0]) {
-            case "accueil":
-                echo "-----3---";
                 require "views/accueil.view.php";
-                break;
-            case "products":
-                if (empty($url[1])) {
-                    echo "----4----";
+
+                if (empty($url[0])) {
+                    echo "----tous s'affiche----";
                     $productController->afficherProducts();
                     echo "---------";
-                } else if ($url[1] === "l") {
+                    //URL 0 = ID
+                } else if ($url[0]) {
                     //ici j'affiche 1seul livre
-                    $productController->afficherProducts($url[2]);
-                } else if ($url[1] === "a") {
+                    $productController->afficherProducts($url[0]);
+                } else if ($url[0] === "a") {
                     $productController->ajoutProduct();
-                } else if ($url[1] === "m") {
-                    $productController->modificationProduct($url[2]);
-                } else if ($url[1] === "s") {
-                    $productController->suppressionProduct($url[2]);
-                } else if ($url[1] === "av") {
-                    $productController->ajoutProductValidation();
-                } else if ($url[1] === "mv") {
-                    $productController->modificationProductValidation();
-                } else {
-                    //ici j'utilise le throw qui permet de gérée une exception 
-                    //du coup si la page n'existe pas.
-                    throw new Exception("La page n'existe sur product pas");
+                // } else if ($url[0] === "m") {
+                //     $productController->modificationProduct($url[1]);
+                // } else if ($url[1] === "s") {
+                //     $productController->suppressionProduct($url[2]);
+                // } else if ($url[2] === "av") {
+                //     $productController->ajoutProductValidation();
+                // } else if ($url[2] === "mv") {
+                // $productController->modificationProductValidation();
+                // } else {
+                //     //ici j'utilise le throw qui permet de gérée une exception 
+                //     //du coup si la page n'existe pas.
+                //     throw new Exception("La page n'existe sur product pas");
                 }
-
-                break;
-                //ici j'utilise le throw qui permet de gérée une exception 
-                //du coup si la page n'existe pas.
-        default:
-                throw new Exception("La page n'existe pas");
-        }
-    }
-} catch (Exception $e) {
-
-    echo $e->getMessage();
-}
 
 ?>

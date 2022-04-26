@@ -124,7 +124,6 @@ class ProductManager extends Database{
                     $this->getProductById($id)->setPurchase_date($purchase_date);
                     $this->getProductById($id)->setExpiration_date($expiration_date);
                     $this->getProductById($id)->setPrimary_visual($primary_visual);
-
                 }   
             }
         }
