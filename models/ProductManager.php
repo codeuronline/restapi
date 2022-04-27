@@ -6,14 +6,14 @@ require_once "Product.php";
 
 class ProductManager extends Database{
 
-        private $products;
-
-
-    public function ajoutProduct($data){
-        $this->products[] = $data;
+    private $products;
+        
+        
+    public function ajoutProduct($product){
+        var_dump("ajout de Product à la liste Products:");
+        var_dump($product);
+        $this->products[] = $product;
     }
-
-
         public function getProducts(){
         return $this->products;
     }
@@ -25,15 +25,17 @@ class ProductManager extends Database{
         $req->execute();
         $mesProducts = $req->fetchAll(PDO::FETCH_ASSOC);
         $req->closeCursor();
-        var_dump("chargement de produit");
         foreach($mesProducts as $data){
+            var_dump("chargement des données data provenant de la BD : ");
             var_dump($data);
             $p = new Product($data);
+            var_dump("conversion en objet product avec les données data : ");
             var_dump($p);
             $this->ajoutProduct($p);
         }
     }
 
+    
             public function getProductById($id){
             //on utilise la boucle for et on part un zero car c'est un tableau
             for($i=0; $i < count($this->products);$i++){

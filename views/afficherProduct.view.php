@@ -1,9 +1,5 @@
 <?php
 ob_start();
-// require_once "models/Product.php";
-// require_once "models/ProductManager.php";
-// $productManager = new ProductManager;
-// $productManager->chargementProducts();
 
 ?>
 <table class="table">

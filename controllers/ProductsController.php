@@ -15,19 +15,17 @@ class ProductsController{
     
     public function afficherProducts(){
 
-    $products= $this->getProductManager()->getProducts();
- 
-
-    require "views/product.view.php";
+       $products= $this->getProductManager()->getProducts();
+        require "views/product.view.php";
     }
     
     public function afficherProduct($id){
 
-    $product= $this->productManager->getproductById($id);
-    require "views/afficherProduct.view.php";    
+        $product= $this->productManager->getproductById($id);
+        require "views/afficherProduct.view.php";    
     }
 
 
     public function getProductManager(){ return $this->productManager; }
-    public function setProductManager($productManager){ $this->productManager = $productManager; }
+    public function setProductManager($productManager){ $this->productManager = $productManager; return $this;}
 }

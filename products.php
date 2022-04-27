@@ -5,7 +5,7 @@ require_once "controllers/ProductsController.php";
 $productController = new ProductsController;
 if (isset($_GET['id']))
 {
-        require "views/accueil.view.php";
+        //require "views/accueil.view.php";
         $url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
         if (empty($url[0])) {
             $productController->afficherProducts();
