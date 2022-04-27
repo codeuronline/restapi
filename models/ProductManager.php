@@ -25,10 +25,8 @@ class ProductManager extends Database{
         $mesProducts = $req->fetchAll(PDO::FETCH_ASSOC);
         $req->closeCursor();
         foreach($mesProducts as $product){
-            
             $p = new Product($product);
-            var_dump($p);
-                       $this->ajoutProduct($p);
+            $this->ajoutProduct($p);
         }
     }
 

@@ -17,7 +17,6 @@ class Product extends Database{
         private $primary_visual;
 
         public function __construct($data){
-            var_dump($data);
             extract($data);
             $this->id_product = $id_product;
             $this->code = $code;

@@ -1,10 +1,5 @@
 <?php
 
-// require_once "models/Product.php";
-// require_once  "models/ProductManager.php";
-// $productManager = new ProductManager;
-// $productManager->chargementProducts(); 
-var_dump($products);
 ob_start();
 ?>
 
@@ -69,5 +64,5 @@ ob_start();
 <a href="<?= URL ?>videos/a/" class="btn btn-success d-block">Ajouter</a>
 <?php
 $content = ob_get_clean();
-$titre = "liste des produits"; // $videos->getTitre();
+$titre = "Liste des produits(All)"; // $videos->getTitre();
 require "template.php"; ?>
