@@ -59,7 +59,7 @@ ob_start();
             <td>
                 <a href="<?=URL?>update.php?id=<?=$product->getId_product()?>"><button
                         class="btn btn-primary">Up</button></a>
-                <a href="<?=URL?>delete.php?id=<?=$product->getid_product()?>"><button class="btn btn-danger"
+                <a href="<?=URL?>delete.php?id=<?=$product->getId_product()?>"><button class="btn btn-danger"
                         onclick="return confirm('Voulez-vous supprimer ?')">X</button></a>
             </td>
         </tr>

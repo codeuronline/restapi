@@ -27,8 +27,8 @@ ob_start();
     ?>
 
         <tr>
-            <td><?=$product->getId_product() ?></td>
-            <td><?=$product->getPrimary_visual() ?></td>
+            <td><?= $product->getId_product() ?></td>
+            <td><?= $product->getPrimary_visual() ?></td>
             <td><?=$product->getCode() ?></td>
             <td><?=$product->getDescription() ?></td>
             <td><?=$product->getPrice() ?></td>
@@ -38,8 +38,8 @@ ob_start();
             <td><?=$product->getPurchase_date()?></td>
             <td><?=$product->getExpiration_date()?></td>
             <td>
-                <a href="update.php?id=<?=$product->getId_product()?>"><button class="btn btn-primary">Up</button></a>
-                <a href="delete.php?id=<?=$product->getId_product()?>"><button class="btn btn-danger"
+                <a href="update.php?id=<?= $product->getId_product()?>"><button class="btn btn-primary">Up</button></a>
+                <a href="delete.php?id=<?= $product->getId_product()?>"><button class="btn btn-danger"
                         onclick="return confirm('Voulez-vous supprimer ?')">X</button></a>
             </td>
         </tr>

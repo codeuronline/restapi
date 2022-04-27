@@ -17,24 +17,23 @@ class Product extends Database{
         private $primary_visual;
 
         public function __construct($data){
-            var_dump("dans l'objet product");
-            var_dump("donnees de la variable data transmise à l'objet product");
             var_dump($data);
             extract($data);
             $this->id_product = $id_product;
-            $this->$code = $code;
-            $this->$description = $description;
-            $this->$price = $price;
-            $this->$category_id = $category_id;
-            $this->$statut_id = $statut_id;
-            $this->$supplier_id = $supplier_id;
-            $this->$purchase_date = $purchase_date;
-            $this->$expiration_date = $expiration_date;
-            $this->$primary_visual = $primary_visual;
+            $this->code = $code;
+            $this->description = $description;
+            $this->price = $price;
+            $this->category_id = $category_id;
+            $this->statut_id = $statut_id;
+            $this->supplier_id = $supplier_id;
+            $this->purchase_date = $purchase_date;
+            $this->expiration_date = $expiration_date;
+            $this->primary_visual = $primary_visual;
+            
         }
 
 public function getId_product(){return $this->id_product;}
-public function setId_product($id_product){$this->id_product = $id_product;return $this;}
+public function setId($id_product){$this->id_product = $id_product;return $this;}
 
 
 public function getCode(){return $this->code;}

@@ -10,11 +10,10 @@ class ProductManager extends Database{
         
         
     public function ajoutProduct($product){
-        var_dump("ajout de Product à la liste Products:");
-        var_dump($product);
         $this->products[] = $product;
     }
-        public function getProducts(){
+    
+    public function getProducts(){
         return $this->products;
     }
     
@@ -25,13 +24,11 @@ class ProductManager extends Database{
         $req->execute();
         $mesProducts = $req->fetchAll(PDO::FETCH_ASSOC);
         $req->closeCursor();
-        foreach($mesProducts as $data){
-            var_dump("chargement des données data provenant de la BD : ");
-            var_dump($data);
-            $p = new Product($data);
-            var_dump("conversion en objet product avec les données data : ");
+        foreach($mesProducts as $product){
+            
+            $p = new Product($product);
             var_dump($p);
-            $this->ajoutProduct($p);
+                       $this->ajoutProduct($p);
         }
     }
 
