@@ -18,15 +18,16 @@ class ProductManager extends Database{
     }
     
 
-    //on passe ici
+    
     public function chargementProducts(){
         $req = $this->getPDO()->prepare("SELECT * FROM products");
         $req->execute();
         $mesProducts = $req->fetchAll(PDO::FETCH_ASSOC);
         $req->closeCursor();
+        var_dump("chargement de produit");
         foreach($mesProducts as $product){
-            var_dump($product);
             $p = new Product($product);
+            var_dump($p);
             $this->ajoutProduct($p);
         }
     }
@@ -34,7 +35,7 @@ class ProductManager extends Database{
             public function getProductById($id){
             //on utilise la boucle for et on part un zero car c'est un tableau
             for($i=0; $i < count($this->products);$i++){
-            if($this->products[$i]->getId() === $id){
+            if($this->products[$i]->getId_product() === $id){
             return $this->products[$i];
                 }
             }
@@ -67,12 +68,10 @@ class ProductManager extends Database{
                 }        
             }
         
-        
-        
             public function suppressionProductBD($id){
-                $req = "DELETE FROM products WHERE id = :id_Product";  
+                $req = "DELETE FROM products WHERE id = :id_product";  
                 $stmt = $this->getPDO()->prepare($req);  
-                $stmt->bindValue(":id_Product",$id,PDO::PARAM_INT);  
+                $stmt->bindValue(":id_product",$id,PDO::PARAM_INT);  
                 $resultat = $stmt->execute();   
                 $stmt->closeCursor();  
                 if($resultat > 0){
@@ -83,9 +82,9 @@ class ProductManager extends Database{
         
         
         
-            public function modificationProductBD($data){
+            public function modificationProductBd($data){
                 extract($data);
-                $req = "UPDATE livres SET products (id_product,code,description,price,category_id,statut_id,supplier_id,purchase_date,expiration_date,primary_visual) values (:id_product,:code,:description,:price,category_id,:statut_id,:supplier_id,:purchase_date,:expiration_date,:primary_visual) WHERE id = :id";      
+                $req = "UPDATE products SET products (id_product,code,description,price,category_id,statut_id,supplier_id,purchase_date,expiration_date,primary_visual) values (:id_product,:code,:description,:price,category_id,:statut_id,:supplier_id,:purchase_date,:expiration_date,:primary_visual) WHERE id = :id";      
                 $stmt = $this->getPDO()->prepare($req); 
                 
                 $stmt->bindValue(":id_product",$id_product,PDO::PARAM_INT);
