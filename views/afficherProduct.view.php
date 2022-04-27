@@ -1,10 +1,10 @@
 <?php
-
-// require_once "models/Product.php";
-// require_once  "models/ProductManager.php";
-// $productManager = new ProductManager;
-// $productManager->chargementProducts(); 
-
+require_once "models/Product.php";
+require_once  "models/ProductManager.php";
+$productManager = new ProductManager;
+$productManager->chargementProducts(); 
+ob_start();
+ 
 // var_dump($products);?>
 <table class="table">
     <thead>
@@ -26,38 +26,38 @@
         <!-- //$videos=$videoManager->getVideos(); -->
         <tr>
             <td>
-                <?=$product->getId_product() ?>
+                <?=$products->getId_product() ?>
             </td>
             <td>
-                <?=$product->getPrimary_visual() ?>
+                <?=$products->getPrimary_visual() ?>
             </td>
             <td>
-                <?=$product->getCode() ?>
+                <?=$products->getCode() ?>
             </td>
             <td>
-                <?=$product->getDescription() ?>
+                <?=$products->getDescription() ?>
             </td>
             <td>
-                <?=$product->getPrice() ?>
+                <?=$products->getPrice() ?>
             </td>
             <td>
-                <?=$product->getCategory_id()?>
+                <?=$products->getCategory_id()?>
             </td>
             <td>
-                <?=$product->getStatut_id() ?>
+                <?=$products->getStatut_id() ?>
             </td>
             <td>
-                <?=$product->getSupplier_id()?>
+                <?=$products->getSupplier_id()?>
             </td>
             <td>
-                <?=$product->getPurchase_date()?>
+                <?=$products->getPurchase_date()?>
             </td>
             <td>
-                <?=$product->getExpiration_date()?>
+                <?=$products->getExpiration_date()?>
             </td>
             <td>
-                <a href="update.php?id=<?=$product->getId_product()?>"><button class="btn btn-primary">Up</button></a>
-                <a href="delete.php?id=<?=$product->getId_product()?>"><button class="btn btn-danger"
+                <a href="update.php?id=<?=$products->getId_product()?>"><button class="btn btn-primary">Up</button></a>
+                <a href="delete.php?id=<?=$products->getId_product()?>"><button class="btn btn-danger"
                         onclick="return confirm('Voulez-vous supprimer ?')">X</button></a>
             </td>
         </tr>

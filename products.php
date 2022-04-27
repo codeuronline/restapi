@@ -1,19 +1,13 @@
 <?php 
-//ici je définie ma constante j'utilise str_replace pour remplacer index.php par 
-//du vide dans l'url et ensuite je récompose ce qu'il me reste dans le chemin
+
 define("URL", str_replace("products.php", "", (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]"));
-
-
 require_once "controllers/ProductsController.php";
-
-
 $productController = new ProductsController;
-
-
-
+if (isset($_GET['id']))
+{
         $url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
-
-        require "views/accueil.view.php";
+}
+        //require "views/accueil.view.php";
 
         if (empty($url[0])) {
             echo "----tous s'affiche----";
@@ -24,7 +18,7 @@ $productController = new ProductsController;
             //ici j'affiche 1seul livre
             $productController->afficherProducts($url[0]);
         } else if ($url[0] === "a") {
-            $productController->ajoutProduct();
+            // $productController->ajoutProduct();
         // } else if ($url[0] === "m") {
         //     $productController->modificationProduct($url[1]);
         // } else if ($url[1] === "s") {

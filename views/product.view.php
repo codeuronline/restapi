@@ -29,35 +29,36 @@
                     <?=$product->getId_Product() ?>
                 </td>
                 <td>
-                    <?=$product['primary_visual'] ?>
+                    <?=$product->getPrimary_visual() ?>
                 </td>
                 <td>
-                    <?=$product['code'] ?>
+                    <?=$product->getCode() ?>
                 </td>
                 <td>
-                    <?=$product['description'] ?>
+                    <?=$product->getDescription() ?>
                 </td>
                 <td>
-                    <?=$product['price'] ?>
+                    <?=$product->getPrice() ?>
                 </td>
                 <td>
-                    <?=$product['category_id'] ?>
+                    <?=$product->getCategory_id() ?>
                 </td>
                 <td>
-                    <?=$product['statut_id'] ?>
+                    <?=$product->getStatut_id() ?>
                 </td>
                 <td>
-                    <?=$product['supplier_id']?>
+                    <?=$product->getSupplier_id()?>
                 </td>
                 <td>
-                    <?=$product['purchase_date']?>
+                    <?=$product->getPurchase_date()?>
                 </td>
                 <td>
-                    <?=$product['expiration_date']?>
+                    <?=$product->getExpiration_date()?>
                 </td>
                 <td>
-                    <a href="update.php?id=<?=$product['id_product']?>"><button class="btn btn-primary">Up</button></a>
-                    <a href="delete.php?id=<?=$product['id_product']?>"><button class="btn btn-danger"
+                    <a href="<?=URL?>update.php?id=<?=$product->getId_product()?>"><button
+                            class="btn btn-primary">Up</button></a>
+                    <a href="<?=URL?>delete.php?id=<?=$product->getid_product()?>"><button class="btn btn-danger"
                             onclick="return confirm('Voulez-vous supprimer ?')">X</button></a>
                 </td>
             </tr>
@@ -67,6 +68,5 @@
     <a href="<?= URL ?>videos/a/" class="btn btn-success d-block">Ajouter</a>
     <?php
 $content = ob_get_clean();
-
-$titre = "liste des vidéos"; // $videos->getTitre();
+$titre = "liste des produits"; // $videos->getTitre();
 require "template.php"; ?>
