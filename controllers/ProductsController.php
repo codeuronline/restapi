@@ -26,7 +26,7 @@ class ProductsController{
     }
     public function afficherProduct($id){
 
-    $products= $this->productManager->getproductById($id);
+    $product= $this->productManager->getproductById($id);
     require "views/afficherProduct.view.php";    
     }
 

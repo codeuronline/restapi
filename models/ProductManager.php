@@ -114,16 +114,17 @@ class ProductManager extends Database{
                 $stmt->bindValue(":purchase_date",$purchase_date,PDO::PARAM_STR);
                 $stmt->bindValue(":expiration_date",$expiration_date,PDO::PARAM_STR);
                 $stmt->bindValue(":primary_visual",$primary_visual,PDO::PARAM_STR);
-                    $this->getProductById($id)->setId_Prodcut($id_product);    
-                    $this->getProductById($id)->setId_Code($code);    
-                    $this->getProductById($id)->setDescription($description);
-                    $this->getProductById($id)->setPrice($price);
-                    $this->getProductById($id)->setCategory_id($category_id);
-                    $this->getProductById($id)->setStatut_id($statut_id);
-                    $this->getProductById($id)->setSupplier_id($supplier_id);
-                    $this->getProductById($id)->setPurchase_date($purchase_date);
-                    $this->getProductById($id)->setExpiration_date($expiration_date);
-                    $this->getProductById($id)->setPrimary_visual($primary_visual);
+
+                $this->getProductById($id)->setId_Prodcut($id_product);    
+                $this->getProductById($id)->setId_Code($code);    
+                $this->getProductById($id)->setDescription($description);
+                $this->getProductById($id)->setPrice($price);
+                $this->getProductById($id)->setCategory_id($category_id);
+                $this->getProductById($id)->setStatut_id($statut_id);
+                $this->getProductById($id)->setSupplier_id($supplier_id);
+                $this->getProductById($id)->setPurchase_date($purchase_date);
+                $this->getProductById($id)->setExpiration_date($expiration_date);
+                $this->getProductById($id)->setPrimary_visual($primary_visual);
                 }   
             }
         }
