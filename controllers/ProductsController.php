@@ -23,7 +23,7 @@ class ProductsController{
     
     public function afficherProduct($id){
 
-    $products= $this->productManager->getproductById($id);
+    $product= $this->productManager->getproductById($id);
     require "views/afficherProduct.view.php";    
     }
 
@@ -100,5 +100,5 @@ class ProductsController{
     }
 
     public function getProductManager(){ return $this->ProductManager; }
-    public function setProductManager($productManager){ $this->productManager = $productManager; return $this;}
+    public function setProductManager($productManager){ $this->productManager = $productManager; }
 }

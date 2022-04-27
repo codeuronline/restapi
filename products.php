@@ -9,8 +9,7 @@ require_once "controllers/ProductsController.php";
 
 $productController = new ProductsController;
 var_dump("avant verification");
-var_dump($_GET['id']);
-if ($_GET['id']) {
+if (isset($_GET['id'])) {
     $url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
     var_dump("id trouve");
     var_dump($url);

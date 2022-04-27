@@ -5,7 +5,7 @@
 // $productManager = new ProductManager;
 // $productManager->chargementProducts(); 
 
-var_dump($products);?>
+// var_dump($products);?>
 <table class="table">
     <thead>
         <th>ID</th>
@@ -21,13 +21,13 @@ var_dump($products);?>
         <th>Actions</th>
     </thead>
     <tbody>
-        <?php foreach ($products as $product) :?>
+        <!--?php foreach ($products as $product) :?> -->
 
         <!-- //$videos=$videoManager->getVideos(); -->
         <tr>
-            <!-- <td>
+            <td>
                 <?=$product->getId_product() ?>
-            </td> -->
+            </td>
             <td>
                 <?=$product->getPrimary_visual() ?>
             </td>
@@ -61,7 +61,7 @@ var_dump($products);?>
                         onclick="return confirm('Voulez-vous supprimer ?')">X</button></a>
             </td>
         </tr>
-        <?php endforeach ?>
+        <!--?php endforeach ?> -->
     </tbody>
 </table>
 <a href="<?= URL ?>videos/a/" class="btn btn-success d-block">Ajouter</a>
