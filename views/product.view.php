@@ -5,7 +5,7 @@
 // $productManager = new ProductManager;
 // $productManager->chargementProducts(); 
 
-var_dump($products);?>
+?>
 <table class="table">
     <table class="table">
         <thead>

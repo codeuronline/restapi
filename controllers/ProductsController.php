@@ -4,7 +4,7 @@ require_once "models/ProductManager.php";
 
 class ProductsController{
 
-    public $productManager;
+    private $productManager;
     
     public function __construct() {
         
@@ -16,14 +16,11 @@ class ProductsController{
     public function afficherProducts(){
 
     $products= $this->getProductManager()->getProducts();
-    if (isset($products)){
-        echo 'isset';}
-        else {
-        echo 'pas définie';
-        }
+ 
 
     require "views/product.view.php";
     }
+    
     public function afficherProduct($id){
 
     $product= $this->productManager->getproductById($id);
@@ -31,7 +28,7 @@ class ProductsController{
     }
 
     public function ajoutProduct(){
-    require "views/ajoutProduct.view.php";
+    require "ajoutProduct.view.php";
     }    
     
     public function ajoutProductValidation(){
@@ -75,20 +72,20 @@ class ProductsController{
         }else return ($date."_".$file['name']);
     }
     public function suppressionProduct($id){
-        unlink("public/images/".$this->videoManager->getVideoById($id)->getPhoto());
-        $this->videoManager->suppressionVideoBd($id);
-        header('Location: '. URL . "videos");
+        unlink("public/images/".$this->productManager->getProductById($id)->getPhoto());
+        $this->productManager->suppressionProductBd($id);
+        header('Location: '. URL . "products");
     }
 
     public function modificationProduct($id){
-        $video = $this->videoManager->getProductById($id);
-        require "views/modifierVideo.view.php";
+        $product = $this->videoManager->getProductById($id);
+        require "views/modifierProduct.view.php";
     }
 
     public function modificationProductValidation(){
     $data= $_POST;
     //$data['id']=$data['identifiant'];
-    $imageActuelle = $this->videoManager->getProductById($_POST['id'])->getPrimary_visual();
+    $imageActuelle = $this->productManager->getProductById($_POST['id'])->getPrimary_visual();
     $file = $_FILES['photo'];
     if($file['size'] > 0){
         $repertoire = "public/images/";
@@ -98,27 +95,10 @@ class ProductsController{
         $data['photo'] = $imageActuelle;
     }
     //extract($data);
-    $this->videoManager->modificationProductBd($data);
+    $this->productManager->modificationProductBd($data);
     header('Location: '. URL . "products");
     }
 
-    /**
-     * Get the value of videoManager
-     */ 
-    public function getProductManager()
-    {
-        return $this->ProductManager;
-    }
-
-    /**
-     * Set the value of videoManager
-     *
-     * @return  self
-     */ 
-    public function setProductManager($productManager)
-    {
-        $this->productManager = $productManager;
-
-        return $this;
-    }
+    public function getProductManager(){ return $this->ProductManager; }
+    public function setProductManager($productManager){ $this->productManager = $productManager; }
 }
