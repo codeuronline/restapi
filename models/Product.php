@@ -46,20 +46,20 @@ class Product extends Database{
         }
 
 
-        public function getAll($id=null) { 
-        $data = [];
-        $db = new Product($data);
-        $pdo = $db->getPDO();
-        if (empty($data)) {
+        // public function getAll($id=null) { 
+        // $data = [];
+        // $db = new Product($data);
+        // $pdo = $db->getPDO();
+        // if (empty($data)) {
             
-        if (isset($id)){ 
-            $sql= "SELECT * FROM products WHERE id=$id";
-        }else{
-            $sql="SELECT * FROM products";
-        }
-        return $pdo->query($sql)->fetchAll();
-        }
-    }    
+        // if (isset($id)){ 
+        //     $sql= "SELECT * FROM products WHERE id=$id";
+        // }else{
+        //     $sql="SELECT * FROM products";
+        // }
+        // return $pdo->query($sql)->fetchAll();
+        // }
+    // }    
 
     
 

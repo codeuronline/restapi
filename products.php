@@ -9,20 +9,21 @@ require_once "controllers/ProductsController.php";
 
 $productController = new ProductsController;
 
-
 if (isset($_GET['id'])) {
     $url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
     require "views/accueil.view.php";
+    var_dump($url);
     if (empty($url[0])) {
         echo "----tous s'affiche----";
         $productController->afficherProducts();
-        echo "---------";
         //URL 0 = ID
     } else if ($url[0]) {
-//ici j'affiche 1seul livre
-        $productController->afficherProducts($url[0]);
-    } else if ($url[0] === "a") {
-        $productController->ajoutProduct();
+
+        $productController->afficherProduct($url[0]);
+        require "views/accueil.view.php";
+    // } else if ($url[0] === "a") {
+    //     echo "ajout";
+    //     $productController->ajoutProduct();
     // } else if ($url[0] === "m") {
     //     $productController->modificationProduct($url[1]);
     // } else if ($url[1] === "s") {
@@ -36,6 +37,8 @@ if (isset($_GET['id'])) {
     //     //du coup si la page n'existe pas.
     //     throw new Exception("La page n'existe sur product pas");
     }
-}else {require "views/accueil.view.php";}
+}else { var_dump("pas d'id definit->on affiche tous");
+    $productController->afficherProducts();
+    require "views/accueil.view.php";}
 
 ?>

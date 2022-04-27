@@ -16,22 +16,18 @@ class ProductsController{
     public function afficherProducts(){
 
     $products= $this->getProductManager()->getProducts();
-    if (isset($products)){
-        echo 'isset';}
-        else {
-        echo 'pas définie';
-        }
+ 
 
-    require "views/product.view.php";
+    require "product.view.php";
     }
     public function afficherProduct($id){
 
     $products= $this->productManager->getproductById($id);
-    require "views/afficherProduct.view.php";    
+    require "afficherProduct.view.php";    
     }
 
     public function ajoutProduct(){
-    require "views/ajoutProduct.view.php";
+    require "ajoutProduct.view.php";
     }    
     
     public function ajoutProductValidation(){
@@ -102,23 +98,6 @@ class ProductsController{
     header('Location: '. URL . "products");
     }
 
-    /**
-     * Get the value of videoManager
-     */ 
-    public function getProductManager()
-    {
-        return $this->ProductManager;
-    }
-
-    /**
-     * Set the value of videoManager
-     *
-     * @return  self
-     */ 
-    public function setProductManager($productManager)
-    {
-        $this->productManager = $productManager;
-
-        return $this;
-    }
+    public function getProductManager(){ return $this->ProductManager; }
+    public function setProductManager($productManager){ $this->productManager = $productManager; return $this;}
 }
