@@ -5,29 +5,29 @@ require_once "Product.php";
 
 
 class ProductManager extends Database{
-    private $products;
+
+        private $products;
 
 
-    public function ajoutProduct($product){
+        public function ajoutProduct($product){
         $this->products[] = $product;
     }
 
 
-    public function getProducts(){
+        public function getProducts(){
         return $this->products;
     }
     
 
     
-    public function chargementProducts(){
+        public function chargementProducts(){
         $req = $this->getPDO()->prepare("SELECT * FROM products");
         $req->execute();
         $mesProducts = $req->fetchAll(PDO::FETCH_ASSOC);
         $req->closeCursor();
-        var_dump("chargement de produit");
         foreach($mesProducts as $product){
-            $p = new Product($product);
-            var_dump($p);
+            $p = new Product($product['id_product'],$product['code'],$product['description'],$product['price'],$product['category_id'],
+            $product['supplier_id'],$product['statut_id'],$product['expiration_date'],$product['purchase_date'],$product['primary_visual']);
             $this->ajoutProduct($p);
         }
     }
@@ -66,9 +66,9 @@ class ProductManager extends Database{
                     $product = new Product($this->getPDO()->lastInsertId(),$data);
                     $this->ajoutProduct($product);
                 }        
-            }
+                }
         
-            public function suppressionProductBD($id){
+                public function suppressionProductBD($id){
                 $req = "DELETE FROM products WHERE id = :id_product";  
                 $stmt = $this->getPDO()->prepare($req);  
                 $stmt->bindValue(":id_product",$id,PDO::PARAM_INT);  
@@ -78,15 +78,13 @@ class ProductManager extends Database{
                     $product = $this->getProductById($id);
                     unset($product);  
                 }    
-            }
+                }
         
-        
-        
-            public function modificationProductBd($data){
+
+                public function modificationProductBd($data){
                 extract($data);
                 $req = "UPDATE products SET products (id_product,code,description,price,category_id,statut_id,supplier_id,purchase_date,expiration_date,primary_visual) values (:id_product,:code,:description,:price,category_id,:statut_id,:supplier_id,:purchase_date,:expiration_date,:primary_visual) WHERE id = :id";      
                 $stmt = $this->getPDO()->prepare($req); 
-                
                 $stmt->bindValue(":id_product",$id_product,PDO::PARAM_INT);
                 $stmt->bindValue(":code",$code,PDO::PARAM_STR);
                 $stmt->bindValue(":description",$description,PDO::PARAM_STR);

@@ -5,7 +5,7 @@ require_once 'Database.php';
 
 
 class Product extends Database{    
-        private $id_product;
+        public $id_product;
         private $code;
         private $description;
         private $price;
@@ -28,9 +28,12 @@ class Product extends Database{
         //     "primary_visual"    => ""]
         // ;
                 
-        public function __construct($data){
+        public function __construct(
+            $id_product,$code,$description,$price,$category_id,
+            $supplier_id,$statut_id,$expiration_date,$purchase_date,$primary_visual)
+            {
             //if (empty($data)){ $data=$this->data_exemple;}
-            extract($data);
+            // extract($data);
             $this->id_product = $id_product;
             $this->$code = $code;
             $this->$description = $description;

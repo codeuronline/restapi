@@ -6,14 +6,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Liste des produits</title>
+    <!-- <title>Liste des produits</title> -->
 
     <link rel="stylesheet" href="https://bootswatch.com/4/minty/bootstrap.min.css">
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
             aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,16 +27,16 @@
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
                     <!-- ici je met le nom du fichier direct dans le href, c'est donc ce que j'ai définie dans les case du fichier index.php ! Accueil-->
-                    <a class="nav-link" href="<?=URL ?>index.php">Accueil</a>
+                    <!-- <a class="nav-link" href="<?=URL ?>index.php">Accueil</a>
                 </li>
 
                 <li class="nav-item">
                     <!-- ici je met le nom du fichier direct dans le href, c'est donc ce que j'ai définie dans les case du fichier index.php ! Livres-->
-                    <a class="nav-link" href="<?=URL ?>products.php">Produits</a>
+                    <!-- <a class="nav-link" href="<?=URL ?>products.php">Produits</a>
                 </li>
             </ul>
         </div>
-    </nav>
+    </nav> --> 
 
 
 
