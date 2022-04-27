@@ -8,19 +8,21 @@ require_once "controllers/ProductsController.php";
 
 
 $productController = new ProductsController;
-
-if (isset($_GET['id'])) {
+var_dump("avant verification");
+var_dump($_GET['id']);
+if ($_GET['id']) {
     $url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
+    var_dump("id trouve");
+    var_dump($url);
     require "views/accueil.view.php";
     var_dump($url);
     if (empty($url[0])) {
-        echo "----tous s'affiche----";
-        $productController->afficherProducts();
-        //URL 0 = ID
+    
+        var_dump("affichage de tous les produits")
+;        $productController->afficherProducts();
     } else if ($url[0]) {
-
+        var_dump("affichage du produit:".$url[0]);
         $productController->afficherProduct($url[0]);
-        require "views/accueil.view.php";
     // } else if ($url[0] === "a") {
     //     echo "ajout";
     //     $productController->ajoutProduct();

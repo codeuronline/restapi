@@ -24,9 +24,10 @@ class ProductManager extends Database{
         $req->execute();
         $mesProducts = $req->fetchAll();
         $req->closeCursor();
+        var_dump("chargement de produit");
         foreach($mesProducts as $product){
-            var_dump($product);
             $p = new Product($product);
+            var_dump($p);
             $this->ajoutProduct($p);
         }
     }

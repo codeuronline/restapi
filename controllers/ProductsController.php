@@ -18,12 +18,13 @@ class ProductsController{
     $products= $this->getProductManager()->getProducts();
  
 
-    require "product.view.php";
+    require "views/product.view.php";
     }
+    
     public function afficherProduct($id){
 
     $products= $this->productManager->getproductById($id);
-    require "afficherProduct.view.php";    
+    require "views/afficherProduct.view.php";    
     }
 
     public function ajoutProduct(){

@@ -4,9 +4,7 @@
 require_once 'Database.php';
 
 
-class Product extends Database{
-
-    
+class Product extends Database{    
         private $id_product;
         private $code;
         private $description;
