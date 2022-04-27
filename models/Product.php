@@ -17,10 +17,10 @@ class Product extends Database{
         private $primary_visual;
 
         public function __construct($data){
-        //  var_dump($data);
+         //var_dump($data);
             extract($data);
-            $this->id_product = $data['id_product'];
-            $this->$code = $data['code'];
+            $this->id_product = $id_product;
+            $this->$code = $code;
             $this->$description = $description;
             $this->$price = $price;
             $this->$category_id = $category_id;

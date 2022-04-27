@@ -5,32 +5,22 @@ require_once "controllers/ProductsController.php";
 $productController = new ProductsController;
 if (isset($_GET['id']))
 {
+        require "views/accueil.view.php";
         $url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
-}
-        //require "views/accueil.view.php";
-
         if (empty($url[0])) {
-            echo "----tous s'affiche----";
-            $productController->afficherProduct();
-            echo "---------";
-            //URL 0 = ID
+            $productController->afficherProducts();
+    
         } else if ($url[0]) {
-            //ici j'affiche 1seul livre
+            //ici j'affiche 1seul produit
             $productController->afficherProduct($url[0]);
-        } else if ($url[0] === "a") {
-            // $productController->ajoutProduct();
-        // } else if ($url[0] === "m") {
-        //     $productController->modificationProduct($url[1]);
-        // } else if ($url[1] === "s") {
-        //     $productController->suppressionProduct($url[2]);
-        // } else if ($url[2] === "av") {
-        //     $productController->ajoutProductValidation();
-        // } else if ($url[2] === "mv") {
-        // $productController->modificationProductValidation();
-        // } else {
-        //     //ici j'utilise le throw qui permet de gérée une exception 
-        //     //du coup si la page n'existe pas.
-        //     throw new Exception("La page n'existe sur product pas");
+        
         }
 
+}else{
+        require "views/accueil.view.php";
+//        $productController->afficherProducts();
+
+    }
+
+        
 ?>
