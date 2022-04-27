@@ -22,7 +22,7 @@ class ProductManager extends Database{
     public function chargementProducts(){
         $req = $this->getPDO()->prepare("SELECT * FROM products");
         $req->execute();
-        $mesProducts = $req->fetchAll();
+        $mesProducts = $req->fetchAll(PDO::FETCH_ASSOC);
         $req->closeCursor();
         var_dump("chargement de produit");
         foreach($mesProducts as $product){
