@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 require_once "models/Product.php";
 require_once  "models/ProductManager.php";
 $productManager = new ProductManager;
@@ -6,6 +7,15 @@ $productManager->chargementProducts();
 ob_start();
  
 // var_dump($products);?>
+=======
+ob_start(); 
+// require_once "models/Product.php";
+// require_once  "models/ProductManager.php";
+// $productManager = new ProductManager;
+// $productManager->chargementProducts(); 
+
+?>
+>>>>>>> 87b0e4cefea7e45cbd075fe24869162e8fee0375
 <table class="table">
     <thead>
         <th>ID</th>
@@ -22,10 +32,28 @@ ob_start();
     </thead>
     <tbody>
         <!--?php foreach ($products as $product) :?> -->
+            <?php
+    // ici je crée une boucle qui parcourt le tableau et qui me permet d'afficher,
+    // ma liste de livre a travers ma variable livres.
+    //ma variable livres sera donc utiliser dans mon controleur par 
+    //la fonction afficher ce qui permet d'afficher l'ensemble des livres.
+    for($i=0; $i < count($products);$i++) : 
+    ?>
 
-        <!-- //$videos=$videoManager->getVideos(); -->
         <tr>
+            <td><?=$products[$i]->getId_product() ?></td>
+            <td><?=$products[$i]->getPrimary_visual() ?></td>
+            <td><?=$products[$i]->getCode() ?></td>
+            <td><?=$products[$i]->getDescription() ?></td>
+            <td><?=$products[$i]->getPrice() ?></td>
+            <td><?=$products[$i]->getCategory_id()?></td>
+            <td><?=$products[$i]->getStatut_id() ?></td>
+            <td><?=$products[$i]->getSupplier_id()?></td>
+            <td><?=$products[$i]->getPurchase_date()?></td>
+            <td><?=$products[$i]->getExpiration_date()?></td>
+
             <td>
+<<<<<<< HEAD
                 <?=$products->getId_product() ?>
             </td>
             <td>
@@ -58,15 +86,20 @@ ob_start();
             <td>
                 <a href="update.php?id=<?=$products->getId_product()?>"><button class="btn btn-primary">Up</button></a>
                 <a href="delete.php?id=<?=$products->getId_product()?>"><button class="btn btn-danger"
+=======
+                <a href="update.php?id=<?=$products[$i]->getId_product()?>"><button class="btn btn-primary">Up</button></a>
+                <a href="delete.php?id=<?=$products[$i]->getId_product()?>"><button class="btn btn-danger"
+>>>>>>> 87b0e4cefea7e45cbd075fe24869162e8fee0375
                         onclick="return confirm('Voulez-vous supprimer ?')">X</button></a>
             </td>
         </tr>
-        <!--?php endforeach ?> -->
+        <?php endfor ?>
     </tbody>
+
 </table>
-<a href="<?= URL ?>videos/a/" class="btn btn-success d-block">Ajouter</a>
+<a href="<?= URL ?>products/delete/" class="btn btn-success d-block">Ajouter</a>
 <?php
 $content = ob_get_clean();
 
-$titre = "liste des vidéos"; // $videos->getTitre();
+$titre = "Liste des produits";
 require "template.php"; ?>

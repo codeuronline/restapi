@@ -14,20 +14,18 @@ class ProductsController{
     }
     
     
-    public function afficherProducts(){
-
-    $products= $this->getProductManager()->getProducts();
- 
-
-    require "views/product.view.php";
-    }
     
-    public function afficherProduct($id){
+    public function afficherProduct($id=null){
+        if ($id) {
 
-    $product= $this->productManager->getproductById($id);
+    $products= $this->productManager->getproductById($id);}
+    else {
+        $products= $this->getProductManager()->getProducts();
+    }
     require "views/afficherProduct.view.php";    
     }
 
+<<<<<<< HEAD
     // public function ajoutProduct(){
     // require "ajoutProduct.view.php";
     // }    
@@ -100,6 +98,12 @@ class ProductsController{
     // header('Location: '. URL . "products");
     // }
 
+=======
+ public function ajoutProduct(){
+   require "ajoutProduct.view.php";
+     }    
+
+>>>>>>> 87b0e4cefea7e45cbd075fe24869162e8fee0375
     public function getProductManager(){ return $this->productManager; }
     public function setProductManager($productManager){ $this->productManager = $productManager; }
 }

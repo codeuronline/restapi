@@ -11,12 +11,12 @@ if (isset($_GET['id']))
 
         if (empty($url[0])) {
             echo "----tous s'affiche----";
-            $productController->afficherProducts();
+            $productController->afficherProduct();
             echo "---------";
             //URL 0 = ID
         } else if ($url[0]) {
             //ici j'affiche 1seul livre
-            $productController->afficherProducts($url[0]);
+            $productController->afficherProduct($url[0]);
         } else if ($url[0] === "a") {
             // $productController->ajoutProduct();
         // } else if ($url[0] === "m") {
