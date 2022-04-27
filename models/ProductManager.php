@@ -9,13 +9,8 @@ class ProductManager extends Database{
         private $products;
 
 
-<<<<<<< HEAD
     public function ajoutProduct($data){
         $this->products[] = $data;
-=======
-        public function ajoutProduct($product){
-        $this->products[] = $product;
->>>>>>> 87b0e4cefea7e45cbd075fe24869162e8fee0375
     }
 
 
@@ -30,17 +25,11 @@ class ProductManager extends Database{
         $req->execute();
         $mesProducts = $req->fetchAll(PDO::FETCH_ASSOC);
         $req->closeCursor();
-<<<<<<< HEAD
         var_dump("chargement de produit");
         foreach($mesProducts as $data){
             var_dump($data);
             $p = new Product($data);
             var_dump($p);
-=======
-        foreach($mesProducts as $product){
-            $p = new Product($product['id_product'],$product['code'],$product['description'],$product['price'],$product['category_id'],
-            $product['supplier_id'],$product['statut_id'],$product['expiration_date'],$product['purchase_date'],$product['primary_visual']);
->>>>>>> 87b0e4cefea7e45cbd075fe24869162e8fee0375
             $this->ajoutProduct($p);
         }
     }
@@ -73,7 +62,6 @@ class ProductManager extends Database{
             //     $stmt->bindValue(":primary_visual",$primary_visual,PDO::PARAM_STR);
 
 
-<<<<<<< HEAD
             //     $resultat = $stmt->execute();
             //     $stmt->closeCursor();
             //     if($resultat > 0){
@@ -111,48 +99,10 @@ class ProductManager extends Database{
             //     $stmt->bindValue(":purchase_date",$purchase_date,PDO::PARAM_STR);
             //     $stmt->bindValue(":expiration_date",$expiration_date,PDO::PARAM_STR);
             //     $stmt->bindValue(":primary_visual",$primary_visual,PDO::PARAM_STR);  
-=======
-                $resultat = $stmt->execute();
-                $stmt->closeCursor();
-                if($resultat > 0){
-                    $product = new Product($this->getPDO()->lastInsertId(),$data);
-                    $this->ajoutProduct($product);
-                }        
-                }
-        
-                public function suppressionProductBD($id){
-                $req = "DELETE FROM products WHERE id = :id_product";  
-                $stmt = $this->getPDO()->prepare($req);  
-                $stmt->bindValue(":id_product",$id,PDO::PARAM_INT);  
-                $resultat = $stmt->execute();   
-                $stmt->closeCursor();  
-                if($resultat > 0){
-                    $product = $this->getProductById($id);
-                    unset($product);  
-                }    
-                }
-        
-
-                public function modificationProductBd($data){
-                extract($data);
-                $req = "UPDATE products SET products (id_product,code,description,price,category_id,statut_id,supplier_id,purchase_date,expiration_date,primary_visual) values (:id_product,:code,:description,:price,category_id,:statut_id,:supplier_id,:purchase_date,:expiration_date,:primary_visual) WHERE id = :id";      
-                $stmt = $this->getPDO()->prepare($req); 
-                $stmt->bindValue(":id_product",$id_product,PDO::PARAM_INT);
-                $stmt->bindValue(":code",$code,PDO::PARAM_STR);
-                $stmt->bindValue(":description",$description,PDO::PARAM_STR);
-                $stmt->bindValue(":price",$price,PDO::PARAM_INT);
-                $stmt->bindValue(":category_id",$category_id,PDO::PARAM_INT);
-                $stmt->bindValue(":statut_id",$statut_id,PDO::PARAM_INT);
-                $stmt->bindValue(":supplier_id",$supplier_id,PDO::PARAM_INT);
-                $stmt->bindValue(":purchase_date",$purchase_date,PDO::PARAM_STR);
-                $stmt->bindValue(":expiration_date",$expiration_date,PDO::PARAM_STR);
-                $stmt->bindValue(":primary_visual",$primary_visual,PDO::PARAM_STR);  
->>>>>>> 87b0e4cefea7e45cbd075fe24869162e8fee0375
                 
             //     $resultat = $stmt->execute();      
             //     $stmt->closeCursor();
         
-<<<<<<< HEAD
             //     if($resultat > 0){    
             //     $this->getPDO();
             //     $stmt->bindValue(":id_product",$id_product,PDO::PARAM_INT);
@@ -177,31 +127,4 @@ class ProductManager extends Database{
             //         $this->getProductById($id)->setPrimary_visual($primary_visual);
             //     }   
             // }
-=======
-                if($resultat > 0){    
-                $this->getPDO();
-                $stmt->bindValue(":id_product",$id_product,PDO::PARAM_INT);
-                $stmt->bindValue(":code",$code,PDO::PARAM_STR);
-                $stmt->bindValue(":description",$description,PDO::PARAM_STR);
-                $stmt->bindValue(":price",$price,PDO::PARAM_INT);
-                $stmt->bindValue(":category_id",$category_id,PDO::PARAM_INT);
-                $stmt->bindValue(":statut_id",$statut_id,PDO::PARAM_INT);
-                $stmt->bindValue(":supplier_id",$supplier_id,PDO::PARAM_INT);
-                $stmt->bindValue(":purchase_date",$purchase_date,PDO::PARAM_STR);
-                $stmt->bindValue(":expiration_date",$expiration_date,PDO::PARAM_STR);
-                $stmt->bindValue(":primary_visual",$primary_visual,PDO::PARAM_STR);
-
-                $this->getProductById($id)->setId_Prodcut($id_product);    
-                $this->getProductById($id)->setId_Code($code);    
-                $this->getProductById($id)->setDescription($description);
-                $this->getProductById($id)->setPrice($price);
-                $this->getProductById($id)->setCategory_id($category_id);
-                $this->getProductById($id)->setStatut_id($statut_id);
-                $this->getProductById($id)->setSupplier_id($supplier_id);
-                $this->getProductById($id)->setPurchase_date($purchase_date);
-                $this->getProductById($id)->setExpiration_date($expiration_date);
-                $this->getProductById($id)->setPrimary_visual($primary_visual);
-                }   
-            }
->>>>>>> 87b0e4cefea7e45cbd075fe24869162e8fee0375
         }

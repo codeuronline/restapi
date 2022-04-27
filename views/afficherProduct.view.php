@@ -1,21 +1,11 @@
 <?php
-<<<<<<< HEAD
-require_once "models/Product.php";
-require_once  "models/ProductManager.php";
-$productManager = new ProductManager;
-$productManager->chargementProducts(); 
 ob_start();
- 
-// var_dump($products);?>
-=======
-ob_start(); 
 // require_once "models/Product.php";
-// require_once  "models/ProductManager.php";
+// require_once "models/ProductManager.php";
 // $productManager = new ProductManager;
-// $productManager->chargementProducts(); 
+// $productManager->chargementProducts();
 
 ?>
->>>>>>> 87b0e4cefea7e45cbd075fe24869162e8fee0375
 <table class="table">
     <thead>
         <th>ID</th>
@@ -32,7 +22,7 @@ ob_start();
     </thead>
     <tbody>
         <!--?php foreach ($products as $product) :?> -->
-            <?php
+        <?php
     // ici je crée une boucle qui parcourt le tableau et qui me permet d'afficher,
     // ma liste de livre a travers ma variable livres.
     //ma variable livres sera donc utiliser dans mon controleur par 
@@ -53,7 +43,6 @@ ob_start();
             <td><?=$products[$i]->getExpiration_date()?></td>
 
             <td>
-<<<<<<< HEAD
                 <?=$products->getId_product() ?>
             </td>
             <td>
@@ -86,10 +75,6 @@ ob_start();
             <td>
                 <a href="update.php?id=<?=$products->getId_product()?>"><button class="btn btn-primary">Up</button></a>
                 <a href="delete.php?id=<?=$products->getId_product()?>"><button class="btn btn-danger"
-=======
-                <a href="update.php?id=<?=$products[$i]->getId_product()?>"><button class="btn btn-primary">Up</button></a>
-                <a href="delete.php?id=<?=$products[$i]->getId_product()?>"><button class="btn btn-danger"
->>>>>>> 87b0e4cefea7e45cbd075fe24869162e8fee0375
                         onclick="return confirm('Voulez-vous supprimer ?')">X</button></a>
             </td>
         </tr>
