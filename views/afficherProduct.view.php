@@ -23,7 +23,7 @@ ob_start();
         <tr>
             <td><?= $product->getId_product() ?></td>
             <td>
-                <img class="card" src="<?= $product->getPrimary_visual()?>" alt="visuel">
+                <img class="card" src="<?=URL?>assets/<?= $product->getPrimary_visual()?>" alt="visuel">
             </td>
             <td><?=$product->getCode() ?></td>
             <td><?=$product->getDescription() ?></td>
@@ -34,7 +34,7 @@ ob_start();
             <td><?=$product->getPurchase_date()?></td>
             <td><?=$product->getExpiration_date()?></td>
             <td>
-                <a href=" update.php?id=<?= $product->getId_product()?>"><button class="btn btn-primary"><i
+                <a href="update.php?id=<?= $product->getId_product()?>"><button class="btn btn-primary"><i
                             class="bi bi-upload"></i></button></a>
                 <a href="delete.php?id=<?= $product->getId_product()?>"><button class="btn btn-danger"
                         onclick="return confirm('Voulez-vous supprimer ?')"><i class="bi bi-x-lg"></i></button></a>
@@ -47,5 +47,5 @@ ob_start();
 <?php
 $content = ob_get_clean();
 
-$titre = "Liste des produits";
+$titre = "Produit : ".$product->getDescription();
 require "template.php"; ?>

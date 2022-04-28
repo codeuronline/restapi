@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://bootswatch.com/4/minty/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://https//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="http://localhost/restapi/public/css/style.css">
 </head>
 
 <body>

@@ -26,7 +26,7 @@ ob_start();
 <?php
 
 $content = ob_get_clean();
-$titre = "Ajout d'un product";
+$titre = "Ajout d'un produit";
 require "template.php";
 
 ?>
