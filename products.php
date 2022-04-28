@@ -11,7 +11,7 @@ switch ($_SERVER['REQUEST_METHOD']){
 
             $url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
 
-            var_dump($url[1]);
+
             if (empty($url[1])) {
                 $productController->afficherProducts();
                 var_dump('if');
@@ -28,6 +28,7 @@ switch ($_SERVER['REQUEST_METHOD']){
     case 'POST':
         $POST = array(); //tableau qui va contenir les données reçues
         parse_str(file_get_contents('php://input'), $POST);
+        var_dump($POST);
         break;
     case "PUT": 
         $_PUT = array(); //tableau qui va contenir les données reçues
