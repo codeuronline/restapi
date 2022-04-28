@@ -20,6 +20,12 @@ class Product extends Database{
         public function __construct($data)
         {
             extract($data);
+            isset($category) ?   $category_id=$category      :   null;
+            isset($statut)   ?   $statut_id=$statut          :   null;
+            isset($supplier) ?   $supplier_id=$supplier      :   null;
+            isset($purchase) ?   $purchase_date= $purchase   :   null;
+            isset($expire)   ?   $expiration_date= $expire   :   null;
+            
             $this->id_product = $id_product;
             $this->code = $code;
             $this->description = $description;

@@ -9,3 +9,4 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 #commentaire : ici permet la réécriture d'url avec le numéro de la page demander
 RewriteRule ^(.*)$ products.php?id=$1
+

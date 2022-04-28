@@ -5,22 +5,19 @@ require_once "controllers/ProductsController.php";
 $productController = new ProductsController;
 
 //require "views/accueil.view.php";
+var_dump($_SERVER['REQUEST_METHOD']);
 switch ($_SERVER['REQUEST_METHOD']){
     case 'GET':
         if (!(empty($_GET['id']))){
-
             $url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
 
 
             if (empty($url[1])) {
                 $productController->afficherProducts();
-                var_dump('if');
             } else {
                 //ici j'affiche 1seul produit
                 $productController->afficherProduct($url[1]);
-                var_dump('else');
-            }
-            
+        }            
         }else{
             $productController->afficherProducts();
         }
