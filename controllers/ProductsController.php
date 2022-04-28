@@ -15,7 +15,7 @@ class ProductsController{
     
     public function afficherProducts(){
 
-       $products= $this->getProductManager()->getProducts();
+        $products= $this->getProductManager()->getProducts();
         require "views/product.view.php";
     }
     
@@ -25,8 +25,8 @@ class ProductsController{
         require "views/afficherProduct.view.php";    
     }
 
-public function ajoutProduct(){
-require "ajoutProduct.view.php";
+    public function ajoutProduct(){
+    require "ajoutProduct.view.php";
     }    
 
     public function getProductManager(){ return $this->productManager; }
