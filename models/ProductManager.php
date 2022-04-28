@@ -26,11 +26,10 @@ class ProductManager extends Database{
         $mesProducts = $req->fetchAll(PDO::FETCH_ASSOC);
         $req->closeCursor();
         foreach($mesProducts as $product){
-            $p = new Product($product['id_product'],$product['code'],$product['description'],$product['price'],$product['category_id'],
-            $product['supplier_id'],$product['statut_id'],$product['expiration_date'],$product['purchase_date'],$product['primary_visual']);
-            $this->ajoutProduct($p);
+            $this->ajoutProduct(new Product($product));
         }
     }
+
 
             public function getProductById($id){
             //on utilise la boucle for et on part un zero car c'est un tableau
