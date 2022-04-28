@@ -32,6 +32,7 @@ switch ($_SERVER['REQUEST_METHOD']){
     case "PUT": 
         $_PUT = array(); //tableau qui va contenir les données reçues
         parse_str(file_get_contents('php://input'), $_PUT);
+        var_dump("mise à jour du produit");
         break;
     case "DELETE": break;
     }   

@@ -1,5 +1,5 @@
 <?php
-$url = "http://localhost/restapi/products.php"; // modifier le produit 1
+$url = "http://localhost/MDM/api/product/1"; // modifier le produit 1
 $data = array(
     'code' => 'TVF',
     'description' => 'Thé vert saveur framboise en sachets',
@@ -12,10 +12,11 @@ $data = array(
 );
 $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
 $response = curl_exec($ch);
-echo $response;
+var_dump($response);
 if (!$response) {
     return false;
 }
+?>

@@ -27,14 +27,11 @@ class ProductsController{
 
     public function ajoutProduct($data){
         $this->productManager->ajoutProductBd($data);
-    // require "ajoutProduct.view.php";
+        header('Location: '.URL.'products');
     }    
 
-    public function ajoutVideo(){
-        require "views/ajoutVideo.view.php";
-    }    
-    
-    public function ajoutVideoValidation(){
+   
+    public function ajoutProductValidation(){
         $data=$_POST;
         $file = $_FILES['photo'];
         $repertoire= "public/images/";
@@ -78,14 +75,15 @@ private function ajoutImage($file,$dir){
     }else return ($date."_".$file['name']);
 }
     public function suppressionProduct($id){
-        unlink("public/images/".$this->videoManager->getVideoById($id)->getPhoto());
-        $this->videoManager->suppressionVideoBd($id);
-        header('Location: '. URL . "videos");
+        //unlink("public/images/".$this->videoManager->getVideoById($id)->getPhoto());
+        $this->productManager->suppressionProductBd($id);
+        header('Location: '. URL . "products");
     }
 
     public function modificationProduct($id){
-        $video = $this->videoManager->getVideoById($id);
-        require "views/modifierVideo.view.php";
+        $video = $this->vproductManager->getVideoById($id);
+        header('Location: '.URL."products");
+        //require "views/modifierVideo.view.php";
     }
 
     public function modificationVProductValidation(){

@@ -41,6 +41,8 @@ class ProductManager extends Database{
         
             public function ajoutProductBd($data){
                 extract($data);
+                isset($status)   ?   $statut_id=$status          :   null;
+                isset($statut)   ?   $statut_id=$statut          :   null;  
                 $req = "INSERT INTO products (code,description,price,category_id,statut_id,supplier_id,purchase_date,expiration_date) values (:code,:description,:price,:category_id,:statut_id,:supplier_id,:purchase_date,:expiration_date)";
                 $stmt = $this->getPDO()->prepare($req);
                 //$stmt->bindValue(":id_product",$id_product,PDO::PARAM_INT);
@@ -48,7 +50,7 @@ class ProductManager extends Database{
                 $stmt->bindValue(":description",$description,PDO::PARAM_STR);
                 $stmt->bindValue(":price",$price,PDO::PARAM_INT);
                 $stmt->bindValue(":category_id",$category,PDO::PARAM_INT);
-                $stmt->bindValue(":statut_id",$statut,PDO::PARAM_INT);
+                $stmt->bindValue(":statut_id",$statut_id,PDO::PARAM_INT);
                 $stmt->bindValue(":supplier_id",$supplier,PDO::PARAM_INT);
                 $stmt->bindValue(":purchase_date",$purchase,PDO::PARAM_STR);
                 $stmt->bindValue(":expiration_date",$expire,PDO::PARAM_STR);

@@ -21,7 +21,8 @@ class Product extends Database{
         {
             extract($data);
             isset($category) ?   $category_id=$category      :   null;
-            isset($statut)   ?   $statut_id=$statut          :   null;
+            isset($status)   ?   $statut_id=$status          :   null;
+            isset($statut)   ?   $statut_id=$statut          :   null;  
             isset($supplier) ?   $supplier_id=$supplier      :   null;
             isset($purchase) ?   $purchase_date= $purchase   :   null;
             isset($expire)   ?   $expiration_date= $expire   :   null;
