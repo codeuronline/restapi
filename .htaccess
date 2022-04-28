@@ -1,3 +1,11 @@
-RewriteEngine On #active le modeule RewriteEngine
-RewriteRule ^products/?$ products.php[NC,L]
-RewriteRule ^[^/]+/(\d+)$ products.php?id=$1
+#commentaire :ici je demande l'activation la réécriture d'url
+RewriteEngine On
+
+#commentaire : eviter de lister les fichiers directements via la barre d'url ( sécurité )
+#commentaire : f = fichier
+#commentaire : d = dossier
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#commentaire : ici permet la réécriture d'url avec le numéro de la page demander
+RewriteRule ^(.*)$ products.php?id=$1

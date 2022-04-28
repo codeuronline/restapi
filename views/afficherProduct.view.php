@@ -17,14 +17,9 @@ ob_start();
         <th>Actions</th>
     </thead>
     <tbody>
-        <!--?php foreach ($products as $product) :?> -->
-        <?php
-    // ici je crée une boucle qui parcourt le tableau et qui me permet d'afficher,
-    // ma liste de livre a travers ma variable livres.
-    //ma variable livres sera donc utiliser dans mon controleur par 
-    //la fonction afficher ce qui permet d'afficher l'ensemble des livres.
-    // for($i=0; $i < count($product);$i++) : 
-    ?>
+
+        <!-- <?php var_dump($product) //foreach ($products as $product) :?> -->
+            <?php var_dump('coucou') ?>
 
         <tr>
             <td><?= $product->getId_product() ?></td>
@@ -46,7 +41,7 @@ ob_start();
                         onclick="return confirm('Voulez-vous supprimer ?')"><i class="bi bi-x-lg"></i></button></a>
             </td>
         </tr>
-        <!-- <?php //endfor ?> -->
+        <!-- <?php //endforeach ?> -->
     </tbody>
 
 </table>
