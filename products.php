@@ -25,12 +25,19 @@ switch ($_SERVER['REQUEST_METHOD']){
     case 'POST':
         $POST = array(); //tableau qui va contenir les données reçues
         parse_str(file_get_contents('php://input'), $POST);
+        $productController->ajoutProduct($POST);
         var_dump($POST);
         break;
     case "PUT": 
         $_PUT = array(); //tableau qui va contenir les données reçues
         parse_str(file_get_contents('php://input'), $_PUT);
         var_dump("mise à jour du produit");
+        $productController->modificationProduct($_PUT);
         break;
-    case "DELETE": break;
+    case "DELETE":
+         $DELETE=array();
+         parse_str(file_get_contents('php://input'), $_DELETE);
+         var_dump("suppression du produit");
+         $productController->suppressionProduct($DELETE);
+         break;
     }   
