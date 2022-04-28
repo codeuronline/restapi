@@ -13,15 +13,16 @@ class ProductsController{
     }
     
     
-    
-    public function afficherProduct($id=null){
-        if ($id) {
+    public function afficherProducts(){
 
-    $products= $this->productManager->getproductById($id);}
-    else {
-        $products= $this->getProductManager()->getProducts();
+       $products= $this->getProductManager()->getProducts();
+        require "views/product.view.php";
     }
-    require "views/afficherProduct.view.php";    
+    
+    public function afficherProduct($id){
+
+        $product= $this->productManager->getproductById($id);
+        require "views/afficherProduct.view.php";    
     }
 
 public function ajoutProduct(){
@@ -29,5 +30,5 @@ require "ajoutProduct.view.php";
     }    
 
     public function getProductManager(){ return $this->productManager; }
-    public function setProductManager($productManager){ $this->productManager = $productManager; }
+    public function setProductManager($productManager){ $this->productManager = $productManager; return $this;}
 }

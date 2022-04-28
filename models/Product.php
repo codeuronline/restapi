@@ -5,7 +5,7 @@ require_once 'Database.php';
 
 
 class Product extends Database{    
-        public $id_product;
+        private $id_product;
         private $code;
         private $description;
         private $price;
@@ -34,7 +34,7 @@ class Product extends Database{
 
 
 public function getId_product(){return $this->id_product;}
-public function setId_product($id_product){$this->id_product = $id_product;return $this;}
+public function setId($id_product){$this->id_product = $id_product;return $this;}
 
 
 public function getCode(){return $this->code;}
@@ -61,8 +61,7 @@ public function setSupplier_id($supplier_id){$this->supplier_id = $supplier_id;r
 
 
 public function getPurchase_date(){return $this->purchase_date;}
-public function setPurchase_date($purchase_date){$this->purchase_date = $purchase_date;
-return $this;}
+public function setPurchase_date($purchase_date){$this->purchase_date = $purchase_date;return $this;}
 
 
 public function getExpiration_date(){return $this->expiration_date;}

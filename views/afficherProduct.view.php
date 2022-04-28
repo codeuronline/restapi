@@ -1,9 +1,5 @@
 <?php
-ob_start(); 
-// require_once "models/Product.php";
-// require_once  "models/ProductManager.php";
-// $productManager = new ProductManager;
-// $productManager->chargementProducts(); 
+ob_start();
 
 ?>
 <table class="table">
@@ -22,33 +18,35 @@ ob_start();
     </thead>
     <tbody>
         <!--?php foreach ($products as $product) :?> -->
-            <?php
+        <?php
     // ici je crée une boucle qui parcourt le tableau et qui me permet d'afficher,
     // ma liste de livre a travers ma variable livres.
     //ma variable livres sera donc utiliser dans mon controleur par 
     //la fonction afficher ce qui permet d'afficher l'ensemble des livres.
-    for($i=0; $i < count($products);$i++) : 
+    // for($i=0; $i < count($product);$i++) : 
     ?>
 
         <tr>
-            <td><?=$products[$i]->getId_product() ?></td>
-            <td><?=$products[$i]->getPrimary_visual() ?></td>
-            <td><?=$products[$i]->getCode() ?></td>
-            <td><?=$products[$i]->getDescription() ?></td>
-            <td><?=$products[$i]->getPrice() ?></td>
-            <td><?=$products[$i]->getCategory_id()?></td>
-            <td><?=$products[$i]->getStatut_id() ?></td>
-            <td><?=$products[$i]->getSupplier_id()?></td>
-            <td><?=$products[$i]->getPurchase_date()?></td>
-            <td><?=$products[$i]->getExpiration_date()?></td>
-
+            <td><?= $product->getId_product() ?></td>
             <td>
-                <a href="update.php?id=<?=$products[$i]->getId_product()?>"><button class="btn btn-primary">Up</button></a>
-                <a href="delete.php?id=<?=$products[$i]->getId_product()?>"><button class="btn btn-danger"
-                        onclick="return confirm('Voulez-vous supprimer ?')">X</button></a>
+                <img src="<?= $product->getPrimary_visual()?>" alt="visuel">
+            </td>
+            <td><?=$product->getCode() ?></td>
+            <td><?=$product->getDescription() ?></td>
+            <td><?=$product->getPrice() ?></td>
+            <td><?=$product->getCategory_id()?></td>
+            <td><?=$product->getStatut_id() ?></td>
+            <td><?=$product->getSupplier_id()?></td>
+            <td><?=$product->getPurchase_date()?></td>
+            <td><?=$product->getExpiration_date()?></td>
+            <td>
+                <a href=" update.php?id=<?= $product->getId_product()?>"><button class="btn btn-primary"><i
+                            class="bi bi-upload"></i></button></a>
+                <a href="delete.php?id=<?= $product->getId_product()?>"><button class="btn btn-danger"
+                        onclick="return confirm('Voulez-vous supprimer ?')"><i class="bi bi-x-lg"></i></button></a>
             </td>
         </tr>
-        <?php endfor ?>
+        <!-- <?php //endfor ?> -->
     </tbody>
 
 </table>
