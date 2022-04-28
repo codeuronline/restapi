@@ -7,11 +7,11 @@ $productController = new ProductsController;
 //require "views/accueil.view.php";
 switch ($_SERVER['REQUEST_METHOD']){
     case 'GET':
+    
         if (!(empty($_GET['id']))){
-
             $url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
 
-            var_dump($url[1]);
+            var_dump($url[0]);
             if (empty($url[1])) {
                 $productController->afficherProducts();
                 var_dump('if');

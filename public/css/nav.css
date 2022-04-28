@@ -1,9 +1,4 @@
-/* Error: expected selector.
- *   ,
- * 1 | <<<<<<<< HEAD:public/scss/nav.scss
- *   | ^
- *   '
- *   public\scss\nav.scss 1:1  root stylesheet */
+
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",

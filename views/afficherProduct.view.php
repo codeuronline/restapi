@@ -18,8 +18,7 @@ ob_start();
     </thead>
     <tbody>
 
-        <!-- <?php var_dump($product) //foreach ($products as $product) :?> -->
-            <?php var_dump('coucou') ?>
+
 
         <tr>
             <td><?= $product->getId_product() ?></td>
@@ -41,7 +40,6 @@ ob_start();
                         onclick="return confirm('Voulez-vous supprimer ?')"><i class="bi bi-x-lg"></i></button></a>
             </td>
         </tr>
-        <!-- <?php //endforeach ?> -->
     </tbody>
 
 </table>
