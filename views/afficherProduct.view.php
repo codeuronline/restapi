@@ -29,7 +29,7 @@ ob_start();
         <tr>
             <td><?= $product->getId_product() ?></td>
             <td>
-                <img src="<?= $product->getPrimary_visual()?>" alt="visuel">
+                <img class="card" src="<?= $product->getPrimary_visual()?>" alt="visuel">
             </td>
             <td><?=$product->getCode() ?></td>
             <td><?=$product->getDescription() ?></td>
