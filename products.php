@@ -35,7 +35,7 @@ switch ($_SERVER['REQUEST_METHOD']){
         break;
     case "DELETE":
         $_DELETE = [];
-         parse_str(file_get_contents('php://input'), $_DELETE);
+        parse_str(file_get_contents('php://input'), $_DELETE);
         if (!(empty($_GET['id']))) {
             $url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
             if (empty($url[1])) {
@@ -54,7 +54,21 @@ switch ($_SERVER['REQUEST_METHOD']){
     case "DUPLICATE":
         $DUPLICATE = array();
         parse_str(file_get_contents('php://input'), $DUPLICATE);
+        if (!(empty($_GET['id']))) {
+            $url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
+            if (empty($url[1])) {
+                //on fait rien
+                $productController->afficherProducts();
+            } else {
+                //ici je duplique 1seul produit
+                var_dump($DUPLICATE);
+                $productController->dupliquerProduct($DUPLICATE,$url[1]);
+            }
+        } else {
+            //on  fait rien et on affiche la liste de produits
+            $productController->afficherProducts();
+        }
         var_dump("Porduit dupliquer");
-        $productController->dupliquerProduct($DUPLICATE);
+        
         break;
     }   

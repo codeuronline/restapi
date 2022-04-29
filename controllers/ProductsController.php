@@ -29,11 +29,11 @@ class ProductsController{
         $this->productManager->ajoutProductBd($data);
         header('Location: '.URL.'products');
     }    
-    public function dupliquerProduct($data){
-        $this->productManager->dupliquerProductInBd($data);
+    public function dupliquerProduct($data,$id){
+        $this->productManager->dupliquerProductInBd($data,$id);
         header('Location: '.URL.'products');
     }
-   
+    
     public function ajoutProductValidation(){
         $data=$_POST;
         $file = $_FILES['photo'];

@@ -20,7 +20,7 @@ class Product extends Database{
 
         
         public function __construct($data)
-        {
+        {   var_dump($data);
             extract($data);
             isset($category) ?   $category_id=$category      :   null;
             isset($status)   ?   $statut_id=$status          :   null;
