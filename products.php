@@ -11,7 +11,6 @@ switch ($_SERVER['REQUEST_METHOD']){
         if (!(empty($_GET['id']))){
             $url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
 
-
             if (empty($url[1])) {
                 $productController->afficherProducts();
             } else {
@@ -38,6 +37,6 @@ switch ($_SERVER['REQUEST_METHOD']){
          $DELETE=array();
          parse_str(file_get_contents('php://input'), $_DELETE);
          var_dump("suppression du produit");
-         $productController->suppressionProduct($DELETE);
+         //$productController->suppressionProduct($DELETE);
          break;
     }   

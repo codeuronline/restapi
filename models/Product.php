@@ -15,6 +15,8 @@ class Product extends Database{
         private $purchase_date;
         private $expiration_date;
         private $primary_visual;
+        private $name; // nom litteral du statut
+        private $nom ; // nom de la categorie
 
         
         public function __construct($data)
@@ -22,7 +24,7 @@ class Product extends Database{
             extract($data);
             isset($category) ?   $category_id=$category      :   null;
             isset($status)   ?   $statut_id=$status          :   null;
-            isset($statut)   ?   $statut_id=$statut          :   null;  
+            isset($statut)   ?   $statut_id=$name            :   null;  
             isset($supplier) ?   $supplier_id=$supplier      :   null;
             isset($purchase) ?   $purchase_date= $purchase   :   null;
             isset($expire)   ?   $expiration_date= $expire   :   null;
