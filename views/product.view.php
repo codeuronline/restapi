@@ -25,7 +25,7 @@ ob_start();
                 <?=$product->getId_Product() ?>
             </td>
             <td>
-                <img class="card" src="<?=URL?>assets/<?=$product->getPrimary_visual() ?>" alt="visuel">
+                <img class="card" src="<?=URL?><?=$product->getPrimary_visual() ?>" alt="visuel">
             </td>
             <td>
                 <?=$product->getCode() ?>
@@ -52,10 +52,10 @@ ob_start();
                 <?=$product->getExpiration_date()?>
             </td>
             <td>
-                <a href="<?=URL?>update.php?id=<?=$product->getId_product()?>"><button
-                        class="btn btn-primary"><i class="bi bi-upload"></i></button></a>
+                <a href="<?=URL?>update.php?id=<?=$product->getId_product()?>"><button class="btn btn-primary"><i
+                            class="bi bi-upload"></i></button></a>
 
-                        
+
                 <a href="<?=URL?>delete.php?id=<?=$product->getId_product()?>"><button class="btn btn-danger"
                         onclick="return confirm('Voulez-vous supprimer ?')"><i class="bi bi-x-lg"></i></button></a>
             </td>

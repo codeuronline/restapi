@@ -28,6 +28,11 @@ class Product extends Database{
             isset($supplier) ?   $supplier_id=$supplier      :   null;
             isset($purchase) ?   $purchase_date= $purchase   :   null;
             isset($expire)   ?   $expiration_date= $expire   :   null;
+            //remplace les id par les noms respectifs
+            $statut_id=$name;
+            $category_id =$nom; 
+            $supplier_id=$supplier_name;
+            $primary_visual=$path.'/'.$file_name;
             
             $this->id_product = $id_product;
             $this->code = $code;
