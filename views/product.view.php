@@ -52,11 +52,11 @@ ob_start();
                 <?=$product->getExpiration_date()?>
             </td>
             <td>
-                <a href="<?=URL?>update.php?id=<?=$product->getId_product()?>"><button class="btn btn-primary"><i
+                <a href="<?=URL?>products/<?=$product->getId_product()?>"><button class="btn btn-primary"><i
                             class="bi bi-upload"></i></button></a>
 
 
-                <a href="<?=URL?>delete.php?id=<?=$product->getId_product()?>"><button class="btn btn-danger"
+                <a href="<?=URL?>products/<?=$product->getId_product()?>"><button class="btn btn-danger"
                         onclick="return confirm('Voulez-vous supprimer ?')"><i class="bi bi-x-lg"></i></button></a>
             </td>
         </tr>
