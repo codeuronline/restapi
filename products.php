@@ -22,21 +22,39 @@ switch ($_SERVER['REQUEST_METHOD']){
         }
         break;
     case 'POST':
-        $POST = array(); //tableau qui va contenir les données reçues
+        $POST = []; //tableau qui va contenir les données reçues à inserer
         parse_str(file_get_contents('php://input'), $POST);
         $productController->ajoutProduct($POST);
         var_dump($POST);
         break;
     case "PUT": 
-        $_PUT = array(); //tableau qui va contenir les données reçues
+        $_PUT = []; //tableau qui va contenir les données reçues à modifier
         parse_str(file_get_contents('php://input'), $_PUT);
         var_dump("mise à jour du produit");
         $productController->modificationProduct($_PUT);
         break;
     case "DELETE":
-         $DELETE=array();
+        $_DELETE = [];
          parse_str(file_get_contents('php://input'), $_DELETE);
-         var_dump("suppression du produit");
-         //$productController->suppressionProduct($DELETE);
-         break;
+        if (!(empty($_GET['id']))) {
+            $url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
+            if (empty($url[1])) {
+                //on fait rien
+                $productController->afficherProducts();
+            } else {
+                //ici j'affiche 1seul produit
+                $productController->suppressionProduct($url[1]);
+            }
+        } else {
+            //on  fait rien et on affiche la liste de produits
+            $productController->afficherProducts();
+        }
+        var_dump("suppression du produit");
+        break;
+    case "DUPLICATE":
+        $DUPLICATE = array();
+        parse_str(file_get_contents('php://input'), $DUPLICATE);
+        var_dump("Porduit dupliquer");
+        $productController->dupliquerProduct($DUPLICATE);
+        break;
     }   

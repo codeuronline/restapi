@@ -29,7 +29,10 @@ class ProductsController{
         $this->productManager->ajoutProductBd($data);
         header('Location: '.URL.'products');
     }    
-
+    public function dupliquerProduct($data){
+        $this->productManager->dupliquerProductInBd($data);
+        header('Location: '.URL.'products');
+    }
    
     public function ajoutProductValidation(){
         $data=$_POST;
@@ -81,12 +84,12 @@ private function ajoutImage($file,$dir){
     }
 
     public function modificationProduct($id){
-        $video = $this->vproductManager->getVideoById($id);
+        $video = $this->productManager->getProductById($id);
         header('Location: '.URL."products");
         //require "views/modifierVideo.view.php";
     }
 
-    public function modificationVProductValidation(){
+    public function modificationProductValidation(){
         $data= $_POST;
         //$data['id']=$data['identifiant'];
         $imageActuelle = $this->productManager->getProductById($_POST['id'])->getPhoto();
