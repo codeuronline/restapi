@@ -9,7 +9,7 @@ $data = array(
     'supplier_id' => '1',
     'purchase_date' => '2021-04_01 10:40:00',
     'expiration_date' => '2023-04-01 10:40:00',
-    'primary_visual'=> 2
+    'primary_visual'=> '2'
 );
 $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
