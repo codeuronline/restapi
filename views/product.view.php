@@ -63,7 +63,7 @@ ob_start();
         <?php endforeach ?>
     </tbody>
 </table>
-<a href="<?= URL ?>videos/a/" class="btn btn-success d-block">Ajouter</a>
+<a href="<?= URL ?>products/add" class="btn btn-success d-block">Ajouter</a>
 <?php
 $content = ob_get_clean();
 $titre = "Liste des produits(All)"; // $videos->getTitre();
