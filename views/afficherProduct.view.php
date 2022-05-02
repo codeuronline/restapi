@@ -25,15 +25,15 @@ ob_start();
             <td><?=$product->getCode() ?></td>
             <td><?=$product->getDescription() ?></td>
             <td><?=$product->getPrice() ?></td>
-            <td><?=$product->getCategory_id()?></td>
-            <td><?=$product->getStatut_id() ?></td>
+            <td><?=$product->getCategory_name()?></td>
+            <td><?=$product->getStatut_name() ?></td>
             <td><?=$product->getSupplier_id()?></td>
             <td><?=$product->getPurchase_date()?></td>
             <td><?=$product->getExpiration_date()?></td>
             <td>
-                <a href="update.php?id=<?= $product->getId_product()?>"><button class="btn btn-primary"><i
+                <a href="update/<?= $product->getId_product()?>"><button class="btn btn-primary"><i
                             class="bi bi-upload"></i></button></a>
-                <a href="delete.php?id=<?= $product->getId_product()?>"><button class="btn btn-danger"
+                <a href="del/<?= $product->getId_product()?>"><button class="btn btn-danger"
                         onclick="return confirm('Voulez-vous supprimer ?')"><i class="bi bi-x-lg"></i></button></a>
             </td>
         </tr>

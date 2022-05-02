@@ -11,9 +11,9 @@ function request(id_product,id_statut) {
             console.log('response = ' + http.response);
             if (http.response == true) {
 
-                window.alert(id_statut + " trouvé");
+                window.alert(id_product + ' ' + id_statut + "nouveau statut");
             } else {
-                window.alert(id_statut + " inéxistant");
+                window.alert(id_product+" "+id_statut + " inéxistant");
             }
         }
     }

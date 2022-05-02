@@ -31,8 +31,7 @@ class ProductManager extends Database{
         $mesProducts = $req->fetchAll(PDO::FETCH_ASSOC);
         $req->closeCursor();
         foreach($mesProducts as $product){
-            var_dump($product);
-        $this->ajoutProduct(new Product($product));
+            $this->ajoutProduct(new Product($product));
     }
     }
 
@@ -81,11 +80,11 @@ class ProductManager extends Database{
                 $stmt->bindValue(":code",$code,PDO::PARAM_STR);
                 $stmt->bindValue(":description",$description,PDO::PARAM_STR);
                 $stmt->bindValue(":price",$price,PDO::PARAM_INT);
-                $stmt->bindValue(":category_id",$category,PDO::PARAM_INT);
+                $stmt->bindValue(":category_id",$category_id,PDO::PARAM_INT);
                 $stmt->bindValue(":statut_id",$statut_id,PDO::PARAM_INT);
-                $stmt->bindValue(":supplier_id",$supplier,PDO::PARAM_INT);
-                $stmt->bindValue(":purchase_date",$purchase,PDO::PARAM_STR);
-                $stmt->bindValue(":expiration_date",$expire,PDO::PARAM_STR);
+                $stmt->bindValue(":supplier_id",$supplier_id,PDO::PARAM_INT);
+                $stmt->bindValue(":purchase_date",$purchase_date,PDO::PARAM_STR);
+                $stmt->bindValue(":expiration_date",$expiration_date,PDO::PARAM_STR);
                 $stmt->bindValue(":primary_visual",$primary_visual,PDO::PARAM_INT);
                 $resultat = $stmt->execute();
                 $stmt->closeCursor();
@@ -107,7 +106,48 @@ class ProductManager extends Database{
                 }    
             }
         
+            public function modificationProductRequest($data){
+                extract($data);
+                $req = "UPDATE products SET 
+                statut_id=:=statut_id WHERE id_product = :id_product";      
+                $stmt = $this->getPDO()->prepare($req); 
+                $stmt->bindValue(":id_product",$id_product,PDO::PARAM_INT);
+                                $stmt->bindValue(":statut_id",$statut_id,PDO::PARAM_INT);
+                $resultat = $stmt->execute();      
+                $stmt->closeCursor();
         
+                if($resultat > 0){    
+                $this->getPDO();
+                $stmt->bindValue(":id_product",$id_product,PDO::PARAM_INT);
+                $stmt->bindValue(":statut_id",$statut_id,PDO::PARAM_INT);
+                
+                $this->getProductById($id)->setId_product($id_product);    
+                
+                $this->getProductById($id)->setCategory_id($category_id);
+                $this->getProductById($id)->setStatut_id($statut_id);
+                }   
+            }
+        
+            public function modificationProductRequestBd($data){
+                extract($data);
+                $req = "UPDATE products SET 
+                products statut_id =:statut_id WHERE id_product = :id_product";      
+                
+                $stmt = $this->getPDO()->prepare($req); 
+                $stmt->bindValue(":id_product",$id_product,PDO::PARAM_INT);
+                $stmt->bindValue(":statut_id",$data,PDO::PARAM_INT);
+                $resultat = $stmt->execute();      
+                $stmt->closeCursor();
+        
+                if($resultat > 0){    
+                $this->getPDO();
+                $stmt->bindValue(":id_product",$id_product,PDO::PARAM_INT);
+                $stmt->bindValue(":statut_id",$statut_id,PDO::PARAM_INT);
+                $this->getProductById($id)->setId_product($id_product);    
+                $this->getProductById($id)->setStatut_id($statut_id);
+                
+                }   
+            }
         
             public function modificationProductBd($data){
                 extract($data);
@@ -142,8 +182,8 @@ class ProductManager extends Database{
                 $stmt->bindValue(":expiration_date",$expiration_date,PDO::PARAM_STR);
                 $stmt->bindValue(":primary_visual",$primary_visual,PDO::PARAM_INT);
                 
-                $this->getProductById($id)->setId_Prodcut($id_product);    
-                $this->getProductById($id)->setId_Code($code);    
+                $this->getProductById($id)->setId_product($id_product);    
+                $this->getProductById($id)->setCode($code);    
                 $this->getProductById($id)->setDescription($description);
                 $this->getProductById($id)->setPrice($price);
                 $this->getProductById($id)->setCategory_id($category_id);

@@ -24,7 +24,7 @@ ob_start();
         <!-- //$videos = $videoManager->getVideos(); -->
         <tr>
             <td>
-                <?=$product->getId_Product() ?>
+                <?=$product->getId_product() ?>
             </td>
             <td>
                 <img class="card" src="<?=URL?><?=$product->getPrimary_visual() ?>" alt="visuel">
@@ -39,10 +39,10 @@ ob_start();
                 <?=$product->getPrice() ?>
             </td>
             <td>
-                <?=$product->getCategory_id() ?>
+                <?=$product->getCategory_name() ?>
             </td>
             <td>
-                <?=$product->getStatut_id() ?>
+                <?=$product->getStatut_name() ?>
             </td>
             <td>
                 <?=$product->getSupplier_id()?>
@@ -54,11 +54,11 @@ ob_start();
                 <?=$product->getExpiration_date()?>
             </td>
             <td>
-                <a href="<?=URL?>products/<?=$product->getId_product()?>"><button class="btn btn-primary"><i
+                <a href="<?=URL?>update/<?=$product->getId_product()?>"><button class="btn btn-primary"><i
                             class="bi bi-upload"></i></button></a>
 
 
-                <a href="<?=URL?>products/<?=$product->getId_product()?>"><button class="btn btn-danger"
+                <a href="<?=URL?>del/<?=$product->getId_product()?>"><button class="btn btn-danger"
                         onclick="return confirm('Voulez-vous supprimer ?')"><i class="bi bi-x-lg"></i></button></a>
             </td>
         </tr>

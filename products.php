@@ -3,8 +3,29 @@
 define("URL", str_replace("products.php", "", (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]"));
 require_once "controllers/ProductsController.php";
 $productController = new ProductsController;
-
+$url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
 //require "views/accueil.view.php";
+switch ($url[0]) {
+    case 'del':
+          if (!empty($url[1])){
+            var_dump($url);  
+            $productController->suppressionProduct($url[1]);
+              $productController->afficherProducts();
+              
+          } else { 
+              $productController->afficherProducts();
+          }        
+        break;
+     case 'update':
+     if (!empty($url[1])){
+        $productController->modificationProduct($url[1],$url[2]);
+        $productController->afficherProducts();
+        
+    } else { 
+        $productController->afficherProducts();
+    }        
+        break;
+}
 var_dump($_SERVER['REQUEST_METHOD']);
 switch ($_SERVER['REQUEST_METHOD']){
     case 'GET':

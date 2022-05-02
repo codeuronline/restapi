@@ -25,23 +25,24 @@
             <td><?=$product->getDescription() ?></td>
             <td><?=$product->getPrice() ?></td>
             <td>
-                <?=$product->getCategory_id()?> </td>
+                <?=$product->getCategory_name()?> </td>
             <td>
 
                 <form>
-                    <select name="statut_id" id="statut_id">
+                    <select name="statut_id" id="statut_id"
+                        onchange="request(<?=$product->getId_product()?>,this.value)">
                         <option value="<?=($product->getStatut_id()==1)? $product->getStatut_id() : 1  ?>"
-                            <?=($prodcut->getStatut_id()==1)? "selected":""?>>
+                            <?=($product->getStatut_id()==1)? "selected":""?>>
                             <?=($product->getStatut_id()==1)? "En cours d'approvisionnement":"En cours d'approvisionnement" ?>
                         </option>
                         <option value="<?=($product->getStatut_id()==2)? $product->getStatut_id() : 2  ?>"
-                            <?=($prodcut->getStatut_id()==2)? "selected":""?>>
+                            <?=($product->getStatut_id()==2)? "selected":""?>>
                             <?=($product->getStatut_id()==2)? "En Stock":"En Stock" ?> </option>
                         <option value="<?=($product->getStatut_id()==3)? $product->getStatut_id() : 3  ?>"
-                            <?=($prodcut->getStatut_id()==3)? "selected":""?>>
+                            <?=($product->getStatut_id()==3)? "selected":""?>>
                             <?=($product->getStatut_id()==3)? "Epuisé":"Epuisé"?> </option>
                         <option value="<?=($product->getStatut_id()==4) ? $product->getStatut_id() : 4?>"
-                            <?=($prodcut->getStatut_id()==4)? "selected":""?>>
+                            <?=($product->getStatut_id()==4)? "selected":""?>>
                             <?=($product->getStatut_id()==4)? "Retiré des rayons":"Retiré des rayon" ?> </option>
                     </select>
 
@@ -62,6 +63,7 @@
 
 </table>
 <a href="<?= URL ?>products/delete/" class="btn btn-success d-block">Ajouter</a>
+<script src="../public//request.js"></script>
 <?php
 $content = ob_get_clean();
 
