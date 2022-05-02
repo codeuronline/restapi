@@ -20,16 +20,18 @@ class ProductManager extends Database{
 
     
     public function chargementProducts(){
-        $req = $this->getPDO()->prepare("SELECT *,nom,name,supplier_name,path,file_name FROM products 
+        $req = $this->getPDO()->prepare("SELECT *,category_name,statut_name,supplier_name,path,file_name FROM products 
         INNER JOIN category ON products.category_id=category.id
         INNER JOIN statut ON products.statut_id=statut.id
         INNER JOIN suppliers ON products.supplier_id=suppliers.id
         INNER JOIN assets ON products.primary_visual=assets.id
         ");
+        
         $req->execute();
         $mesProducts = $req->fetchAll(PDO::FETCH_ASSOC);
         $req->closeCursor();
         foreach($mesProducts as $product){
+            var_dump($product);
         $this->ajoutProduct(new Product($product));
     }
     }
@@ -111,10 +113,9 @@ class ProductManager extends Database{
                 extract($data);
                 $req = "UPDATE products SET 
                 products (id_product,code,description,price,category_id,statut_id,supplier_id,purchase_date,expiration_date,primary_visual)
-                values (:id_product,:code,:description,:price,category_id,:statut_id,:supplier_id,:purchase_date,:expiration_date,:primary_visual) WHERE id = :id";      
+                values (:id_product,:code,:description,:price,category_id,:statut_id,:supplier_id,:purchase_date,:expiration_date,:primary_visual) WHERE id_product = :id_product";      
                 
                 $stmt = $this->getPDO()->prepare($req); 
-                
                 $stmt->bindValue(":id_product",$id_product,PDO::PARAM_INT);
                 $stmt->bindValue(":code",$code,PDO::PARAM_STR);
                 $stmt->bindValue(":description",$description,PDO::PARAM_STR);
@@ -124,8 +125,7 @@ class ProductManager extends Database{
                 $stmt->bindValue(":supplier_id",$supplier_id,PDO::PARAM_INT);
                 $stmt->bindValue(":purchase_date",$purchase_date,PDO::PARAM_STR);
                 $stmt->bindValue(":expiration_date",$expiration_date,PDO::PARAM_STR);
-                $stmt->bindValue(":primary_visual",$primary_visual,PDO::PARAM_STR);  
-                
+                $stmt->bindValue(":primary_visual",$primary_visual,PDO::PARAM_INT);  
                 $resultat = $stmt->execute();      
                 $stmt->closeCursor();
         
@@ -140,7 +140,7 @@ class ProductManager extends Database{
                 $stmt->bindValue(":supplier_id",$supplier_id,PDO::PARAM_INT);
                 $stmt->bindValue(":purchase_date",$purchase_date,PDO::PARAM_STR);
                 $stmt->bindValue(":expiration_date",$expiration_date,PDO::PARAM_STR);
-                $stmt->bindValue(":primary_visual",$primary_visual,PDO::PARAM_STR);
+                $stmt->bindValue(":primary_visual",$primary_visual,PDO::PARAM_INT);
                 
                 $this->getProductById($id)->setId_Prodcut($id_product);    
                 $this->getProductById($id)->setId_Code($code);    

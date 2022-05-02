@@ -17,9 +17,6 @@ ob_start();
         <th>Actions</th>
     </thead>
     <tbody>
-
-
-
         <tr>
             <td><?= $product->getId_product() ?></td>
             <td>

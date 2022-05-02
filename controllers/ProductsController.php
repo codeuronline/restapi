@@ -47,36 +47,36 @@ class ProductsController{
     
 }
 
-private function ajoutImage($file,$dir){
+    private function ajoutImage($file,$dir){
 
-    $imageValide=['jpg','jpeg','gif','png','jfif'];
-    
-    if (!isset($file['name'])||empty($file['name'])) {
-        throw new Exception("Vous devez indiquer une photo");   
-    }
-    if (!file_exists($dir)) mkdir($dir,0777);
-    
-    $extension = strtolower(pathinfo($file['name'],PATHINFO_EXTENSION));
-    $date=date("ymdis");
-    $targetfile= $dir.$date."_".$file["name"];
-    
-    /*if (!getimagesize($file["tmp_name"])) {
-        throw new Exception("Le fichier n'est pas une image");
-    }*/
-    if (!in_array($extension,$imageValide)){
-        throw new Exception("L'extension du fichier n'est pas reconnu");
-    }
-    if (file_exists($targetfile)) {
-        throw new Exception("Le fichier existe déjà");
+        $imageValide=['jpg','jpeg','gif','png','jfif'];
         
+        if (!isset($file['name'])||empty($file['name'])) {
+            throw new Exception("Vous devez indiquer une photo");   
+        }
+        if (!file_exists($dir)) mkdir($dir,0777);
+        
+        $extension = strtolower(pathinfo($file['name'],PATHINFO_EXTENSION));
+        $date=date("ymdis");
+        $targetfile= $dir.$date."_".$file["name"];
+        
+        /*if (!getimagesize($file["tmp_name"])) {
+            throw new Exception("Le fichier n'est pas une image");
+        }*/
+        if (!in_array($extension,$imageValide)){
+            throw new Exception("L'extension du fichier n'est pas reconnu");
+        }
+        if (file_exists($targetfile)) {
+            throw new Exception("Le fichier existe déjà");
+            
+        }
+        if ($file['size']>500000) {
+            throw new Exception("Le fichier est trop gros");
+        }
+        if (!move_uploaded_file($file['tmp_name'],$targetfile)) {
+            throw new Exception("l'ajout de l'image n'a pas fonctionné");
+        }else return ($date."_".$file['name']);
     }
-    if ($file['size']>500000) {
-        throw new Exception("Le fichier est trop gros");
-    }
-    if (!move_uploaded_file($file['tmp_name'],$targetfile)) {
-        throw new Exception("l'ajout de l'image n'a pas fonctionné");
-    }else return ($date."_".$file['name']);
-}
     public function suppressionProduct($id){
         //unlink("public/images/".$this->videoManager->getVideoById($id)->getPhoto());
         $this->productManager->suppressionProductBd($id);
@@ -84,15 +84,15 @@ private function ajoutImage($file,$dir){
     }
 
     public function modificationProduct($id){
-        $video = $this->productManager->getProductById($id);
-        header('Location: '.URL."products");
-        //require "views/modifierVideo.view.php";
+        $product = $this->productManager->getProductById($id);
+         require "views/modifierProduct.view.php";
+        //header('Location: '.URL."products");
     }
 
     public function modificationProductValidation(){
-        $data= $_POST;
+        $data= $_GET;
         //$data['id']=$data['identifiant'];
-        $imageActuelle = $this->productManager->getProductById($_POST['id'])->getPhoto();
+        $imageActuelle = $this->productManager->getProductById($_GET['id_product'])->getPhoto();
         $file = $_FILES['photo'];
         if($file['size'] > 0){
             $repertoire = "assets/";
@@ -102,7 +102,7 @@ private function ajoutImage($file,$dir){
             $data['photo'] = $imageActuelle;
         }
         //extract($data);
-        $this->videoManager->modificationProductBd($data);
+        $this->productManager->modificationProductBd($data);
         header('Location: '. URL . "products");
     }
     public function getProductManager(){ return $this->productManager; }

@@ -10,7 +10,6 @@ switch ($_SERVER['REQUEST_METHOD']){
     case 'GET':
         if (!(empty($_GET['id']))){
             $url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
-
             if (empty($url[1])) {
                 $productController->afficherProducts();
             } else {
@@ -31,7 +30,7 @@ switch ($_SERVER['REQUEST_METHOD']){
         $_PUT = []; //tableau qui va contenir les données reçues à modifier
         parse_str(file_get_contents('php://input'), $_PUT);
         var_dump("mise à jour du produit");
-        $productController->modificationProduct($_PUT);
+        $productController->modificationProduct($_PUT,$id);
         break;
     case "DELETE":
         $_DELETE = [];
@@ -54,6 +53,7 @@ switch ($_SERVER['REQUEST_METHOD']){
     case "DUPLICATE":
         $DUPLICATE = array();
         parse_str(file_get_contents('php://input'), $DUPLICATE);
+        var_dump($DUPLICATE);
         if (!(empty($_GET['id']))) {
             $url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
             if (empty($url[1])) {
@@ -65,10 +65,10 @@ switch ($_SERVER['REQUEST_METHOD']){
                 $productController->dupliquerProduct($DUPLICATE,$url[1]);
             }
         } else {
-            //on  fait rien et on affiche la liste de produits
+            //on fait rien et on affiche la liste de produits
             $productController->afficherProducts();
         }
-        var_dump("Porduit dupliquer");
+        var_dump("Produit dupliquer");
         
         break;
     }   

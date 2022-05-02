@@ -1,5 +1,5 @@
 <?php
-$url = "http://localhost/MDM/api/product/1"; // modifier le produit 1
+$url = "http://localhost/restapi/products/1"; // modifier le produit 1
 $data = array(
     'code' => 'TVF',
     'description' => 'Thé vert saveur framboise en sachets',

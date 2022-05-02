@@ -15,24 +15,23 @@ class Product extends Database{
         private $purchase_date;
         private $expiration_date;
         private $primary_visual;
-        private $name; // nom litteral du statut
-        private $nom ; // nom de la categorie
+        private $statut_name; // nom litteral du statut
+        private $category_name ; // nom de la categorie
 
         
         public function __construct($data)
-        {   var_dump($data);
-            extract($data);
+        {   extract($data);
             isset($category) ?   $category_id=$category      :   null;
             isset($status)   ?   $statut_id=$status          :   null;
             isset($statut)   ?   $statut_id=$name            :   null;  
             isset($supplier) ?   $supplier_id=$supplier      :   null;
             isset($purchase) ?   $purchase_date= $purchase   :   null;
             isset($expire)   ?   $expiration_date= $expire   :   null;
-            //remplace les id par les noms respectifs
-            $statut_id=$name;
-            $category_id =$nom; 
-            $supplier_id=$supplier_name;
-            $primary_visual=$path.'/'.$file_name;
+            // remplace les id par les noms respectifs
+            // $statut_id=$statut_name;
+            // $category_id =$category_name; 
+            // $supplier_id=$supplier_name;
+            $primary_visual=$path.$file_name;
             
             $this->id_product = $id_product;
             $this->code = $code;
@@ -44,6 +43,8 @@ class Product extends Database{
             $this->purchase_date = $purchase_date;
             $this->expiration_date = $expiration_date;
             $this->primary_visual = $primary_visual;
+            $this->category_name = $category_name;
+            $this->statut_name = $statut_name;
         }
 
 
@@ -85,6 +86,10 @@ public function setExpiration_date($expiration_date){$this->expiration_date = $e
 public function getPrimary_visual(){return $this->primary_visual;}
 public function setPrimary_visual($primary_visual){$this->primary_visual = $primary_visual;return $this;}
 
-
+public function getStatut_name(){ return $this->statut_name; }
+public function setStatut_name($statut_name){ $this->statut_name = $statut_name;return $this; }
+       
+public function getCategory_name(){ return $this->category_name; }
+public function setCategory_name($category_name){ $this->category_name = $category_name;return $this; }
 }
 ?>

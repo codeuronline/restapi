@@ -18,7 +18,9 @@ ob_start();
         <th>Actions</th>
     </thead>
     <tbody>
-        <?php foreach( $products as $product) : ?>
+        <?php 
+        var_dump($products);
+        foreach( $products as $product) : ?>
         <!-- //$videos = $videoManager->getVideos(); -->
         <tr>
             <td>
