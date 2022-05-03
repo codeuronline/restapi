@@ -86,8 +86,9 @@ class ProductsController{
     public function modificationProductRequest($id_product){
         extract($_GET);
         //$statut_id=$_GET["statut_id"];
+        $this->productManager->modificationProductRequestBd($id_product,$statut_id);        
         $product =$this->productManager->getProductById($id_product);
-        $product->modificationProductRequestBd($id_product,$statut_id);        
+        
     }
     public function modificationProduct($id,$data){
         $product = $this->productManager->getProductById($id);

@@ -87,18 +87,10 @@ public function setExpiration_date($expiration_date){$this->expiration_date = $e
 public function getPrimary_visual(){return $this->primary_visual;}
 public function setPrimary_visual($primary_visual){$this->primary_visual = $primary_visual;return $this;}
 
-<<<<<<< HEAD
 public function getCategory_name() { return $this->category_name; }
 public function setCategory_name($category_name)  { $this->category_name = $category_name;return $this; }
 
 public function getStatut_name() { return $this->statut_name; }
 public function setStatut_name($statut_name) { $this->statut_name = $statut_name; return $this; }
-=======
-public function getStatut_name(){ return $this->statut_name; }
-public function setStatut_name($statut_name){ $this->statut_name = $statut_name;return $this; }
-       
-public function getCategory_name(){ return $this->category_name; }
-public function setCategory_name($category_name){ $this->category_name = $category_name;return $this; }
->>>>>>> 213a11a67bea8819421e60db0f9bc8ffecbabfa4
 }
 ?>
