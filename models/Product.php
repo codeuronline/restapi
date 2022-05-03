@@ -15,9 +15,9 @@ class Product extends Database{
         private $purchase_date;
         private $expiration_date;
         private $primary_visual;
-        private $name; // nom litteral du statut
-        private $nom ; // nom de la categorie
-
+        private $category_name;
+        private $statut_name;
+        
         
         public function __construct($data)
         {   var_dump($data);
@@ -29,9 +29,7 @@ class Product extends Database{
             isset($purchase) ?   $purchase_date= $purchase   :   null;
             isset($expire)   ?   $expiration_date= $expire   :   null;
             //remplace les id par les noms respectifs
-            $statut_id=$name;
-            $category_id =$nom; 
-            $supplier_id=$supplier_name;
+            
             $primary_visual=$path.'/'.$file_name;
             
             $this->id_product = $id_product;
@@ -85,6 +83,10 @@ public function setExpiration_date($expiration_date){$this->expiration_date = $e
 public function getPrimary_visual(){return $this->primary_visual;}
 public function setPrimary_visual($primary_visual){$this->primary_visual = $primary_visual;return $this;}
 
+public function getCategory_name() { return $this->category_name; }
+public function setCategory_name($category_name)  { $this->category_name = $category_name;return $this; }
 
+public function getStatut_name() { return $this->statut_name; }
+public function setStatut_name($statut_name) { $this->statut_name = $statut_name; return $this; }
 }
 ?>

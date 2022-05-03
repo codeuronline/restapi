@@ -25,7 +25,7 @@ switch ($_SERVER['REQUEST_METHOD']){
         $POST = []; //tableau qui va contenir les données reçues à inserer
         parse_str(file_get_contents('php://input'), $POST);
         $productController->ajoutProduct($POST);
-        var_dump($POST);
+       
         break;
     case "PUT": 
         $_PUT = []; //tableau qui va contenir les données reçues à modifier
@@ -61,7 +61,6 @@ switch ($_SERVER['REQUEST_METHOD']){
                 $productController->afficherProducts();
             } else {
                 //ici je duplique 1seul produit
-                var_dump($DUPLICATE);
                 $productController->dupliquerProduct($DUPLICATE,$url[1]);
             }
         } else {
