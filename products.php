@@ -18,7 +18,7 @@ switch ($url[0]) {
         break;
      case 'update':
      if (!empty($url[1])){
-        $productController->modificationProduct($url[1],$url[2]);
+        $productController->modificationProductRequest($url[1]);
         $productController->afficherProducts();
         
     } else { 

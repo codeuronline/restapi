@@ -41,7 +41,7 @@ class ProductsController{
         //$data['photo']=$this->ajoutImage($file,$repertoire);
         $data['photo']=$this->ajoutImage($file,$repertoire);
         echo "AVV";
-        var_dump($data); 
+        // var_dump($data); 
         $this->videoManager->ajoutProductBd($data);
         header('Location: '.URL.'videos');
     
@@ -83,8 +83,11 @@ class ProductsController{
         header('Location: '. URL . "products");
     }
 
-    public function modificationProductRequest($id_product,$statut_id){
-        $product =$this->productManager->getProductById($id_product)->modificationProductRequestBd($statut_id);        
+    public function modificationProductRequest($id_product){
+        extract($_GET);
+        //$statut_id=$_GET["statut_id"];
+        $product =$this->productManager->getProductById($id_product);
+        $product->modificationProductRequestBd($id_product,$statut_id);        
     }
     public function modificationProduct($id,$data){
         $product = $this->productManager->getProductById($id);

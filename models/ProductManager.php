@@ -128,23 +128,23 @@ class ProductManager extends Database{
                 }   
             }
         
-            public function modificationProductRequestBd($data){
-                extract($data);
+            public function modificationProductRequestBd($id,$element){
+                
                 $req = "UPDATE products SET 
                 products statut_id =:statut_id WHERE id_product = :id_product";      
                 
                 $stmt = $this->getPDO()->prepare($req); 
-                $stmt->bindValue(":id_product",$id_product,PDO::PARAM_INT);
-                $stmt->bindValue(":statut_id",$data,PDO::PARAM_INT);
+                $stmt->bindValue(":id_product",$id,PDO::PARAM_INT);
+                $stmt->bindValue(":statut_id",$element,PDO::PARAM_INT);
                 $resultat = $stmt->execute();      
                 $stmt->closeCursor();
         
                 if($resultat > 0){    
                 $this->getPDO();
-                $stmt->bindValue(":id_product",$id_product,PDO::PARAM_INT);
-                $stmt->bindValue(":statut_id",$statut_id,PDO::PARAM_INT);
-                $this->getProductById($id)->setId_product($id_product);    
-                $this->getProductById($id)->setStatut_id($statut_id);
+                $stmt->bindValue(":id_product",$id,PDO::PARAM_INT);
+                $stmt->bindValue(":statut_id",$element,PDO::PARAM_INT);
+                $this->getProductById($id)->setId_product($id);    
+                $this->getProductById($id)->setStatut_id($element);
                 
                 }   
             }
