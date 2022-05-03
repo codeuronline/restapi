@@ -49,7 +49,7 @@ class ProductManager extends Database{
         extract($data);
         isset($status)   ?   $statut_id=$status          :   null;
         isset($statut)   ?   $statut_id=$statut          :   null;
-        $req="INSERT INTO products (code,description,price,category_id,statut_id,supplier_id,purchase_date,expiration_date,primary_visual)  VALUES (:code,:description,:price,:category_id,:statut_id,:supplier_id,:purchase_date,:expiration_date,:primary_visual) ON DUPLICATE KEY UPDATE id_product = id_product+1";
+        $req="INSERT INTO products (code,description,price,category_id,statut_id,supplier_id,purchase_date,expiration_date,primary_visual)  VALUES (:code,:description,:price,:category_id,:statut_id,:supplier_id,:purchase_date,:expiration_date,:primary_visual) ON DUPLICATE KEY UPDATE code=$code, id_product = id_product+1 where id_product=$id";
         $stmt = $this->getPDO()->prepare($req);
         $stmt->bindValue(":code",$code,PDO::PARAM_STR);
         $stmt->bindValue(":description",$description,PDO::PARAM_STR);
@@ -63,7 +63,7 @@ class ProductManager extends Database{
         $resultat = $stmt->execute();
         $stmt->closeCursor();
         if($resultat > 0){
-        $product = new Product($this->getPDO()->lastInsertId(),$data);
+        $product = new Product($this->getPDO()->lastInsertId(),$data);die;
         $this->ajoutProduct($product);
                 }
     }
