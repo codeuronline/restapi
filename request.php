@@ -8,7 +8,7 @@ switch($_SERVER['REQUEST_METHOD']){
                 $productController->modificationProductRequest($id_product,$statut_id);
                  $answerPHP= true;
                  break;
-    case "POST": extract($POST);
+    case "POST": extract(json_decode($POST));
                 $productController->modificationProductRequest($id_product,$statut_id);
                 $answerPHP=true;
                 break;
