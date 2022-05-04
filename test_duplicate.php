@@ -1,5 +1,5 @@
 <?php
-$url = "http://localhost/restapi/products/1"; // modifier le produit 8
+$url = "http://localhost/restapi/products/7"; // modifier le produit 8
 $data = array(
 'code' => 'TVF2',
 'description' => 'Thé vert saveur framboise en sachets',

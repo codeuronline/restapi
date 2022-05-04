@@ -36,10 +36,10 @@ class ProductManager extends Database{
     }
 
 
-            public function getProductById($id){
-            //on utilise la boucle for et on part un zero car c'est un tableau
-            for($i=0; $i < count($this->products);$i++){
-            if($this->products[$i]->getId_product() === $id){
+    public function getProductById($id){
+        //on utilise la boucle for et on part un zero car c'est un tableau
+        for ($i = 0; $i < count($this->products); $i++) {
+            if ($this->products[$i]->getId_product() === $id) {
             return $this->products[$i];
                 }
             }
@@ -49,7 +49,7 @@ class ProductManager extends Database{
         extract($data);
         isset($status)   ?   $statut_id=$status          :   null;
         isset($statut)   ?   $statut_id=$statut          :   null;
-        $req="INSERT INTO products (code,description,price,category_id,statut_id,supplier_id,purchase_date,expiration_date,primary_visual)  VALUES (:code,:description,:price,:category_id,:statut_id,:supplier_id,:purchase_date,:expiration_date,:primary_visual) ON DUPLICATE KEY UPDATE code=$code, id_product = id_product+1 where id_product=$id";
+        $req="INSERT INTO products (code,description,price,category_id,statut_id,supplier_id,purchase_date,expiration_date,primary_visual)  VALUES (:code,:description,:price,:category_id,:statut_id,:supplier_id,:purchase_date,:expiration_date,:primary_visual) ON DUPLICATE KEY UPDATE id_product = id_product+1";
         $stmt = $this->getPDO()->prepare($req);
         $stmt->bindValue(":code",$code,PDO::PARAM_STR);
         $stmt->bindValue(":description",$description,PDO::PARAM_STR);
@@ -70,6 +70,7 @@ class ProductManager extends Database{
         
     public function ajoutProductBd($data){
           extract($data);
+          var_dump($data);
           isset($status)   ?   $statut_id=$status          :   null;
           isset($statut)   ?   $statut_id=$statut          :   null;  
           $req = "INSERT INTO 
@@ -149,14 +150,14 @@ class ProductManager extends Database{
                 }   
             }
         
-            public function modificationProductBd($data){
+            public function modificationProductBd($data,$id){
                 extract($data);
                 $req = "UPDATE products SET 
                 products (id_product,code,description,price,category_id,statut_id,supplier_id,purchase_date,expiration_date,primary_visual)
                 values (:id_product,:code,:description,:price,category_id,:statut_id,:supplier_id,:purchase_date,:expiration_date,:primary_visual) WHERE id_product = :id_product";      
                 
                 $stmt = $this->getPDO()->prepare($req); 
-                $stmt->bindValue(":id_product",$id_product,PDO::PARAM_INT);
+                $stmt->bindValue(":id_product",$id,PDO::PARAM_INT);
                 $stmt->bindValue(":code",$code,PDO::PARAM_STR);
                 $stmt->bindValue(":description",$description,PDO::PARAM_STR);
                 $stmt->bindValue(":price",$price,PDO::PARAM_INT);

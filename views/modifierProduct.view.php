@@ -31,19 +31,12 @@
                 <form>
                     <select name="statut_id" id="statut_id"
                         onchange="request(<?=$product->getId_product()?>,this.value)">
-                        <option value="<?=($product->getStatut_id()==1)? $product->getStatut_id() : 1  ?>"
-                            <?=($product->getStatut_id()==1)? "selected":""?>>
-                            <?=($product->getStatut_id()==1)? "En cours d'approvisionnement":"En cours d'approvisionnement" ?>
+                        <option value="1" <?=($product->getStatut_id()==1)? "selected":""?>>En cours d'approvisionnement
                         </option>
-                        <option value="<?=($product->getStatut_id()==2)? $product->getStatut_id() : 2  ?>"
-                            <?=($product->getStatut_id()==2)? "selected":""?>>
-                            <?=($product->getStatut_id()==2)? "En Stock":"En Stock" ?> </option>
-                        <option value="<?=($product->getStatut_id()==3)? $product->getStatut_id() : 3  ?>"
-                            <?=($product->getStatut_id()==3)? "selected":""?>>
-                            <?=($product->getStatut_id()==3)? "Epuisé":"Epuisé"?> </option>
-                        <option value="<?=($product->getStatut_id()==4) ? $product->getStatut_id() : 4?>"
-                            <?=($product->getStatut_id()==4)? "selected":""?>>
-                            <?=($product->getStatut_id()==4)? "Retiré des rayons":"Retiré des rayon" ?> </option>
+                        <option value="2" <?=($product->getStatut_id()==2)? "selected":""?>>En Stock</option>
+                        <option value="3" <?=($product->getStatut_id()==3)? "selected":""?>>Epuisé</option>
+                        <option value="4" <?=($product->getStatut_id()==4)? "selected":""?>>Retiré des rayon>
+                        </option>
                     </select>
 
                 </form>
@@ -53,10 +46,11 @@
             <td><?=$product->getPurchase_date()?></td>
             <td><?=$product->getExpiration_date()?></td>
             <td>
-                <a href="http://localhost/restapi/products/<?= $product->getId_product()?>"><button
+                <a href="http://localhost/restapi/update/<?= $product->getId_product()?>"><button
                         class="btn btn-primary"><i class="bi bi-upload"></i></button></a>
-                <a href="delete.php?id=<?= $product->getId_product()?>"><button class="btn btn-danger"
-                        onclick="return confirm('Voulez-vous supprimer ?')"><i class="bi bi-x-lg"></i></button></a>
+                <a href="http://localhost/restapi/del/<?= $product->getId_product()?>"><button class="btn btn-danger"
+                        onclick="return confirm('Voulez-vous vraiement supprimer le produit :<?=$product->getDescription()?> ?')"><i
+                            class="bi bi-x-lg"></i></button></a>
             </td>
         </tr>
     </tbody>

@@ -16,9 +16,9 @@ class Product extends Database{
         private $expiration_date;
         private $primary_visual;
         private $statut_name; // nom litteral du statut
-        private $category_name ; // nom de la categorie
-        private $path = "assets/";
-        
+        private $category_name; // nom de la categorie
+        private $path;
+        private $filename;
         public function __construct($data)
         {   extract($data);
             isset($category) ?   $category_id=$category      :   null;
@@ -45,6 +45,8 @@ class Product extends Database{
             $this->primary_visual = $primary_visual;
             $this->category_name = $category_name;
             $this->statut_name = $statut_name;
+            $this->path = "assets/";
+            $this->filename =$this->path.$this->code."_O1.jpg";
            
         }
 
