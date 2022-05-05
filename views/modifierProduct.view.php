@@ -35,7 +35,7 @@
                         </option>
                         <option value="2" <?=($product->getStatut_id()==2)? "selected":""?>>En Stock</option>
                         <option value="3" <?=($product->getStatut_id()==3)? "selected":""?>>Epuisé</option>
-                        <option value="4" <?=($product->getStatut_id()==4)? "selected":""?>>Retiré des rayon>
+                        <option value="4" <?=($product->getStatut_id()==4)? "selected":""?>>Retiré des rayon
                         </option>
                     </select>
 

@@ -52,8 +52,7 @@ class ProductsController{
    require "views/afficherAllProduct.view.php";     
     }
     public function modifierProductRequest($id_product,$statut_id){
-        require "request.php";
-        $this->productManager->modificationProductRequestBd($id_product,$statut_id);        
+        $this->productManager->modificationProductRequest($id_product,$statut_id);        
         $product =$this->productManager->getProductById($id_product);
         
     }

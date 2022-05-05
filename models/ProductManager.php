@@ -70,7 +70,6 @@ class ProductManager extends Database{
         
     public function ajoutProductBd($data){
           extract($data);
-          var_dump($data);
           isset($status)   ?   $statut_id=$status          :   null;
           isset($statut)   ?   $statut_id=$statut          :   null;  
           $req = "INSERT INTO 
@@ -107,13 +106,12 @@ class ProductManager extends Database{
                 }    
             }
         
-            public function modificationProductRequest($data){
-                extract($data);
+            public function modificationProductRequest($id_product,$statut_id){
                 $req = "UPDATE products SET 
-                statut_id=:=statut_id WHERE id_product = :id_product";      
+                statut_id = :statut_id WHERE id_product = :id_product";      
                 $stmt = $this->getPDO()->prepare($req); 
                 $stmt->bindValue(":id_product",$id_product,PDO::PARAM_INT);
-                                $stmt->bindValue(":statut_id",$statut_id,PDO::PARAM_INT);
+                $stmt->bindValue(":statut_id",$statut_id,PDO::PARAM_INT);
                 $resultat = $stmt->execute();      
                 $stmt->closeCursor();
         
@@ -122,10 +120,7 @@ class ProductManager extends Database{
                 $stmt->bindValue(":id_product",$id_product,PDO::PARAM_INT);
                 $stmt->bindValue(":statut_id",$statut_id,PDO::PARAM_INT);
                 
-                $this->getProductById($id)->setId_product($id_product);    
-                
-                $this->getProductById($id)->setCategory_id($category_id);
-                $this->getProductById($id)->setStatut_id($statut_id);
+                $this->getProductById($id_product)->setStatut_id($statut_id);
                 }   
             }
         

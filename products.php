@@ -32,9 +32,7 @@ switch ($_SERVER['REQUEST_METHOD']){
                     // $productController->modificationProductRequest($url[1]);
                     $productController->modifierProduct($url[1]);
                     if(!empty($url[2])){
-                        require "request.php";
-                        $productController->afficherProducts();
-                    }
+                        require "request.php";               }
                     // $productController->afficherProducts();
                 } else { 
                     $productController->afficherProducts();

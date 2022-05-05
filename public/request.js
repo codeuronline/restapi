@@ -1,40 +1,21 @@
-function request(id_product,id_statut) {
+function request(id_product,statut_id) {
+
+    const old = "";
+    let httpRequest = new XMLHttpRequest();
+    //    requête en mode GET, construction de l'URL en récupérant l'id_product et l'id_statut directement, rendre la requête asynchrone
+    httpRequest.open('GET', 'http://localhost/restapi/update/'+id_product+'/'+statut_id, true);
     
-    // //method post
-    // let postObj = { 
-    //     id: id_product, 
-    //     statut_id: id_statut 
-        
-    // }
-    // let post = JSON.stringify(postObj);
-    // const url = "http://localhost/restapi/request.php"
-    // let xhr = new XMLHttpRequest()
-    // xhr.open("post", url, true);
-    // xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8');
-    // xhr.send(post);
-    // xhr.onload = function () {
-    //     if (xhr.status === 201) {
-    //         console.log("Post successfully created!")
-    //     }
-    // }
-    //requete en get
-    let http = new XMLHttpRequest();
-    http.open("GET", "http://localhost/restapi/update/" + id_product + "/" + id_statut, true);
-    http.responseType = "json";
-    http.send();
-    http.onload = function () {
-        if ((http.status != 200) && (http.readyState != 4)) {
-            console.log("Erreur " + http.id_statut + " : " + http.statusText);
-        } else {
-            console.log('response = ' + http.response);
-            console.log("http://localhost/restapi/update/" + id_product + "/" + id_statut, true)
-            if (http.response == true) {
-
-                window.alert(id_product + ' ' + id_statut + "nouveau status");
-            } else {
-                window.alert(id_product+ " " + id_statut + " inéxistant");
-            }
-        }
-    }
-
+    httpRequest.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');//encapsule la requête dans une entête que l'on définit dans une URL
+    httpRequest.onreadystatechange = function() {
+        console.log('id product->'+id_product +' id_statut->'+statut_id);
+        //Si la requête a été reçu (statut 200 : réseau) et 4 : traité
+        if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+            window.alert('id_product->'+id_product+' statut_id->'+statut_id)
+           // Response
+           var response = httpRequest.responseText; 
+     console.log(response);    }
+     };
+     httpRequest.send();
+    
 }
+    
