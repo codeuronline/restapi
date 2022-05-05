@@ -1,3 +1,5 @@
+<?PHP 
+//define("URL", str_replace("products.php", "", (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]")); ?>
 <!DOCTYPE html>
 
 <html lang="fr">

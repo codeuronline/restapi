@@ -18,54 +18,53 @@ ob_start();
         <th>Actions</th>
     </thead>
     <tbody>
-        <?php 
+        <?php
         // var_dump($products);
-        foreach( $products as $product) : ?>
+        foreach ($products as $product) : ?>
         <!-- //$videos = $videoManager->getVideos(); -->
         <tr>
             <td>
-                <?=$product->getId_product() ?>
+                <?= $product->getId_product() ?>
             </td>
             <td>
-                <img class="card" src="<?=URL?><?=$product->getPrimary_visual() ?>" alt="visuel">
+                <img class="card" src="<?= URL ?><?= $product->getPrimary_visual() ?>" alt="visuel">
             </td>
             <td>
-                <?=$product->getCode() ?>
+                <?= $product->getCode() ?>
             </td>
             <td>
-                <?=$product->getDescription() ?>
+                <?= $product->getDescription() ?>
             </td>
             <td>
-                <?=$product->getPrice() ?>
+                <?= $product->getPrice() ?>
             </td>
             <td>
-                <?=$product->getCategory_name() ?>
+                <?= $product->getCategory_name() ?>
             </td>
             <td>
-                <?=$product->getStatut_name() ?>
+                <?= $product->getStatut_name() ?>
             </td>
             <td>
-                <?=$product->getSupplier_id()?>
+                <?= $product->getSupplier_id() ?>
             </td>
             <td>
-                <?=$product->getPurchase_date()?>
+                <?= $product->getPurchase_date() ?>
             </td>
             <td>
-                <?=$product->getExpiration_date()?>
+                <?= $product->getExpiration_date() ?>
             </td>
             <td>
-                <a href="<?=URL?>update/<?=$product->getId_product()?>"><button class="btn btn-primary"><i
+                <a href="<?= URL ?>update/<?= $product->getId_product() ?>"><button class="btn btn-primary"><i
                             class="bi bi-upload"></i></button></a>
-
-
-                <a href="<?=URL?>del/<?=$product->getId_product()?>"><button class="btn btn-danger"
-                        onclick="return confirm('Voulez-vous supprimer ?')"><i class="bi bi-x-lg"></i></button></a>
+                <a href="<?= URL ?>del/<?= $product->getId_product() ?>"><button class="btn btn-danger"
+                        onclick="return confirm('Voulez-vous vraiement supprimer le produit : <?= $product->getDescription() ?> ?')"><i
+                            class="bi bi-x-lg"></i></button></a>
             </td>
         </tr>
         <?php endforeach ?>
     </tbody>
 </table>
-<a href="<?= URL ?>products/add" class="btn btn-success d-block">Ajouter</a>
+<a href="<?= URL ?>products/" class="btn btn-success d-block">accueil</a>
 <?php
 $content = ob_get_clean();
 $titre = "Liste des produits(All)"; // $videos->getTitre();

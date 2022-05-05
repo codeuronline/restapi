@@ -48,8 +48,8 @@ class ProductsController{
 // }
 
     public function supprimerProduct($id){
-   $this->productManager->suppressionProductBD($id);
-   require "views/afficherAllProduct.view.php";     
+        $this->productManager->suppressionProductBD($id);
+        //require "views/afficherAllProduct.view.php";     
     }
     public function modifierProductRequest($id_product,$statut_id){
         $this->productManager->modificationProductRequest($id_product,$statut_id);        
@@ -66,22 +66,7 @@ class ProductsController{
      require "view/afficherAllprouct.view.php";
         
     }
-    // public function modificationProductValidation(){
-    //     $data= $_GET;
-    //     //$data['id']=$data['identifiant'];
-    //     $imageActuelle = $this->productManager->getProductById($_GET['id_product'])->getPhoto();
-    //     $file = $_FILES['photo'];
-    //     if($file['size'] > 0){
-    //         $repertoire = "assets/";
-    //         if (file_exists($repertoire.$imageActuelle)) unlink($repertoire.$imageActuelle);      
-    //         $data['photo'] = $this->ajoutImage($file,$repertoire);
-    //     } else {
-    //         $data['photo'] = $imageActuelle;
-    //     }
-    //     //extract($data);
-    //     $this->productManager->modificationProductBd($data);
-    //     header('Location: '. URL . "products");
-// }
+   
     public function getProductManager(){ return $this->productManager; }
     public function setProductManager($productManager){ $this->productManager = $productManager; return $this;}
 }

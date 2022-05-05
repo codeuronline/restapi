@@ -46,17 +46,16 @@
             <td><?=$product->getPurchase_date()?></td>
             <td><?=$product->getExpiration_date()?></td>
             <td>
-                <a href="http://localhost/restapi/update/<?= $product->getId_product()?>"><button
-                        class="btn btn-primary"><i class="bi bi-upload"></i></button></a>
-                <a href="http://localhost/restapi/del/<?= $product->getId_product()?>"><button class="btn btn-danger"
-                        onclick="return confirm('Voulez-vous vraiement supprimer le produit :<?=$product->getDescription()?> ?')"><i
+                <a href="<?=URL ?>update/<?= $product->getId_product()?>"><button class="btn btn-primary"><i
+                            class="bi bi-upload"></i></button></a>
+                <a href="<?=URL ?>del/<?= $product->getId_product()?>"><button class="btn btn-danger"
+                        onclick="return confirm('Voulez-vous vraiement supprimer le produit : <?=$product->getDescription()?> ?')"><i
                             class="bi bi-x-lg"></i></button></a>
             </td>
         </tr>
     </tbody>
 
 </table>
-<a href="<?= URL ?>products/delete/" class="btn btn-success d-block">Ajouter</a>
 <script src="../public//request.js"></script>
 <?php
 $content = ob_get_clean();

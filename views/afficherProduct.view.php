@@ -31,10 +31,11 @@ ob_start();
             <td><?=$product->getPurchase_date()?></td>
             <td><?=$product->getExpiration_date()?></td>
             <td>
-                <a href="update/<?= $product->getId_product()?>"><button class="btn btn-primary"><i
+                <a href="<?=URL?>update/<?= $product->getId_product()?>"><button class="btn btn-primary"><i
                             class="bi bi-upload"></i></button></a>
-                <a href="del/<?= $product->getId_product()?>"><button class="btn btn-danger"
-                        onclick="return confirm('Voulez-vous supprimer ?')"><i class="bi bi-x-lg"></i></button></a>
+                <a href="<?=URL?>del/<?= $product->getId_product()?>"><button class="btn btn-danger"
+                        onclick="return confirm('Voulez-vous vraiement supprimer le produit : <?=$product->getDescription()?> ?')"><i
+                            class="bi bi-x-lg"></i></button></a>
             </td>
         </tr>
     </tbody>
