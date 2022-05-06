@@ -19,7 +19,7 @@ ob_start();
     </thead>
     <tbody>
         <?php
-        // var_dump($products);
+        error_log(print_r($products,1));
         foreach ($products as $product) : ?>
         <!-- //$videos = $videoManager->getVideos(); -->
         <tr>
