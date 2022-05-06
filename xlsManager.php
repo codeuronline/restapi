@@ -41,7 +41,7 @@ for ($z=0;$z<count($allProducts);$z++){
     $allProductsLabels[$z][""]=$allProducts[$z][6];
     $allProductsLabels[$z][""]=gmdate("d-m-Y H:i:s",($allProducts[$z][7] - 25569) * 86400);
     $allProductsLabels[$z][""]=gmdate("d-m-Y H:i:s",($allProducts[$z][8] - 25569) * 86400);
-    $allProductsLabels[$z]["visual_primary"]=$allProducts[$z][9];
+    //$allProductsLabels[$z]["visual_primary"]=$allProducts[$z][9];
 }
    
 var_dump($allProducts);
