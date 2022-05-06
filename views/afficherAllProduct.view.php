@@ -27,7 +27,9 @@ ob_start();
                 <?= $product->getId_product() ?>
             </td>
             <td>
-                <img class="card" src="<?= URL ?><?= $product->getPrimary_visual() ?>" alt="visuel">
+                <img class="card"
+                    src="<?= URL ?><?= (($product->getPrimary_visual()==null) || (empty($product->getPrimary_visual() )))?"assets/empty.png":$product->getPrimary_visual() ?>"
+                    alt="visuel">
             </td>
             <td>
                 <?= $product->getCode() ?>
