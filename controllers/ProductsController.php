@@ -34,18 +34,6 @@ class ProductsController{
         header('Location: '.URL.'products');
     }
     
-//     public function ajoutProductValidation(){
-//         $data=$_POST;
-//         $file = $_FILES['photo'];
-//         $repertoire= "public/images/";
-//         //$data['photo']=$this->ajoutImage($file,$repertoire);
-//         $data['photo']=$this->ajoutImage($file,$repertoire);
-//         echo "AVV";
-//         // var_dump($data); 
-//         $this->videoManager->ajoutProductBd($data);
-//         header('Location: '.URL.'videos');
-    
-// }
 
     public function supprimerProduct($id){
         $this->productManager->suppressionProductBD($id);

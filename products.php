@@ -12,7 +12,6 @@ switch ($_SERVER['REQUEST_METHOD']){
         // requete GET 
         if (!(empty($_GET['id']))){
         $url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
-        // var_dump($url);die;
         switch ($url[0]) {
             case 'del':
                 var_dump("GET->del");
@@ -22,7 +21,6 @@ switch ($_SERVER['REQUEST_METHOD']){
                                    
                 } else { 
                     var_dump("GET->del->noid");
-                
                 }
                 $productController->afficherProducts();        
                 break;
@@ -40,8 +38,7 @@ switch ($_SERVER['REQUEST_METHOD']){
                 break;
             case 'products';
                 if(!empty($url[1])){
-                $productController->afficherProduct($url[1]);        
-            
+                $productController->afficherProduct($url[1]);            
                 } else{ 
                     $productController->afficherProducts();
                 }   
@@ -49,16 +46,6 @@ switch ($_SERVER['REQUEST_METHOD']){
         }
     break;
     }
-    //     if (empty($url[1])) {
-    //         $productController->afficherProducts();
-    //     } else {
-    //         //ici j'affiche 1seul produit
-    //         $productController->afficherProduct($url[1]);
-    // }            
-    // }else{
-    //     $productController->afficherProducts();
-    // }
-    // break;
     case 'POST':
         $POST = []; //tableau qui va contenir les données reçues à inserer
         parse_str(file_get_contents('php://input'), $POST);
@@ -69,6 +56,7 @@ switch ($_SERVER['REQUEST_METHOD']){
         parse_str(file_get_contents('php://input'), $_PUT);
         var_dump("mise à jour du produit");
         $productController->modifierProductPut($_PUT,$id);
+        header('Location: '.URL.'products');
         break;
     case "DELETE":
         $_DELETE = [];
@@ -87,6 +75,7 @@ switch ($_SERVER['REQUEST_METHOD']){
             $productController->afficherProducts();
         }
         var_dump("suppression du produit");
+        header('Location: '.URL.'products');
         break;
     case "DUPLICATE":
         $DUPLICATE = [];
@@ -106,5 +95,6 @@ switch ($_SERVER['REQUEST_METHOD']){
             $productController->afficherProducts();
         }
         var_dump("Produit dupliquer");
+        header('Location: '.URL.'products');
         break;
     }   
