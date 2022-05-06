@@ -32,7 +32,7 @@ class Product extends Database{
             // $statut_id=$statut_name;
             // $category_id =$category_name; 
             // $supplier_id=$supplier_name;
-            isset($primary_visual) ? $primary_visual= $primary_visual:self::EMPTY;
+            isset($primary_visual) ? $primary_visual= $primary_visual:$primary_visual=self::EMPTY;
             $primary_visual=$path.$file_name;
             
             $this->id_product = $id_product;
