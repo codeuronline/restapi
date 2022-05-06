@@ -190,4 +190,37 @@ class ProductManager extends Database{
                 $this->getProductById($id)->setPrimary_visual($primary_visual);
                 }   
             }
+            // $data est compose  
+            //pour chaque enrgistrement 
+            // d'un Index/nom(code)/description/prix(float)/catégorie/statut(code_statut)/fournisseur(nom fournisseur)/date d'achat(format excel)/date de péremption(format excel)/visuel principal
+
+            function  UpdateLinkTable($id_product,$data){
+                extract($data);
+                // recherche de lien avec assets
+                if (isset($assets_name)){
+                 // asset_name definit -> devient le primary visual
+                 // si le nom du visuel existe dans la table asset et on recupere sont id sinon on l'insere dans la table asset 
+                 // on crere la liaison pour ce produit avec id de la table asset existant/on creer
+                $req = "INSERT INTO product_asset(product_id,assets_id,primary_flag) VALUES(?,?,?)";
+                $stmt = $this->getPDO()->prepare($req); 
+                // $stmt->bindValue(":id_product",$id_product,PDO::PARAM_INT);  
+                // $stmt->bindValue(":assets_id",$asset_id,PDO::PARAM_INT);                    
+                $stmt->execute([$id_product,$assets_id,1]);
+            }
+                
+                if (isset($category_id)){ echo "traitement de la catégorie";
+                    // category_id definit
+                    // recherche de lien avec category
+                    // si elle existe -> on la met a jour sinon 
+                    // on   cree la liaison avec ce produit
+                }
+                // recherche de lien avec supplier
+                if (isset($supplier_name)){}
+                //recherche du fournisseur dans la bd
+                    //si existe pas on le creer dans la bd
+                
+                    // recherche de lien avec le fournisseur si existe pas on le creer
+            }
+           
+            
         }
