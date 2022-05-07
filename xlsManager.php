@@ -28,15 +28,16 @@ for ($j = 2; $j < $lastRow; $j++) {
         }
         $allProducts[]=$aProduct;
     }
-var_dump($allProducts);die;
+
 for ($z=0;$z<count($allProducts);$z++){
     // $allProductsLabel[$z]["id_product"]=$allProducts[$z][0];
     $allProductsLabels[$z]["code"]=$allProducts[$z][1];
-    $allProductsLabels[$z]["code"]=$allProducts[$z][2];
+    $allProductsLabels[$z]["description"]=$allProducts[$z][2];
     $allProductsLabels[$z]["price"]=$allProducts[$z][3] * 100;
     $allProductsLabels[$z]["category_id"]=$allProducts[$z][4];
     $allProductsLabels[$z]["statut_id"]=$allProducts[$z][5];
     $allProductsLabels[$z]["supplier_name"]=$allProducts[$z][6];
+    //tester si le fournisseur existe si non le creer
     $allProductsLabels[$z]["purchase_date"]=gmdate("d-m-Y H:i:s",($allProducts[$z][7] - 25569) * 86400);
     $allProductsLabels[$z]["expiration_date"]=gmdate("d-m-Y H:i:s",($allProducts[$z][8] - 25569) * 86400);
     $allProductsLabels[$z]["visual_primary"]=$allProducts[$z][9];
@@ -52,8 +53,8 @@ for ($z=0;$z<count($allProducts);$z++){
     }   
 }
    
-var_dump($allProducts);
-var_dump("Nombre d'enregistrement importé dans l'objet : ".count($allProducts));
+var_dump($allProductsLabels);
+var_dump("Nombre d'enregistrement importé dans l'objet : ".count($allProductsLabels));
 
-$writer = new Xlsx($spreadsheet);
-$writer->save("put/".date("Y_m_d_h_i")."_treated.xlsx");
+// $writer = new Xlsx($spreadsheet);
+// $writer->save("put/".date("Y_m_d_h_i")."_treated.xlsx");
