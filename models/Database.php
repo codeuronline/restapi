@@ -1,5 +1,5 @@
 <?php
-abstract class Database
+class Database
 {
     private static $host = "localhost";         //chemin d'acces de lhote contenant la Base de donnée
     private static $dbname = "micromarket";        // nom de la base de donnée
