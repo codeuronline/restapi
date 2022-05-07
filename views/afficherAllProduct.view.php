@@ -19,7 +19,7 @@ ob_start();
     </thead>
     <tbody>
         <?php
-        // var_dump($products);
+        error_log(print_r($products,1));
         foreach ($products as $product) : ?>
         <!-- //$videos = $videoManager->getVideos(); -->
         <tr>
@@ -27,7 +27,9 @@ ob_start();
                 <?= $product->getId_product() ?>
             </td>
             <td>
-                <img class="card" src="<?= URL ?><?= $product->getPrimary_visual() ?>" alt="visuel">
+                <img class="card"
+                    src="<?= URL ?><?= (($product->getPrimary_visual()==null) || (empty($product->getPrimary_visual() )))?"assets/empty.png":$product->getPrimary_visual() ?>"
+                    alt="visuel">
             </td>
             <td>
                 <?= $product->getCode() ?>

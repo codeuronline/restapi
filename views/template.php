@@ -36,23 +36,30 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="<?=URL ?>products/">Produits</a>
+                    <a class="nav-link" href="<?=URL ?>products/">Products</a>
                 </li>
-            </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?=URL ?>xlsManager.php">Managers</a>
+                </li>
+
+
         </div>
 
-        <div class="btn-group">
+        <div class=" btn-group">
             <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
                 data-bs-display="static" aria-expanded="false">
                 CHOIX du TEST
             </button>
             <ul class="dropdown-menu dropdown-menu-lg-end">
+                <li class="nav-item">
+                    <a href="nav-link" href="<?= URL?>xlsManager.php"></a>
+                </li>
                 <li><a href="http://localhost/restapi/products/"><button class="dropdown-item"
                             type="button">SHOW</button></a>
                 </li>
-                <!-- <li><a href="http://localhost/restapi/products/"><button class="dropdown-item"
+                <li><a href="http://localhost/restapi/products/"><button class="dropdown-item"
                             type="button">GET</button></a>
-                </li> -->
+                </li>
                 <li><a href="http://localhost/restapi/test_post.php"><button class="dropdown-item"
                             type="button">TEST_POST(Inserer)</button></a></li>
                 <li><a href="http://localhost/restapi/test_put.php"><button class="dropdown-item"
@@ -69,7 +76,8 @@
 
     <div class="container">
 
-        <h1 class="rounded dark p-2 m-2 text-center text-white bg-info"><?= $titre ?></h1>
+        <h1 class="rounded dark p-2 m-2 text-center text-white bg-info"><?= $titre ?>
+        </h1>
 
         <?= $content ?>
 

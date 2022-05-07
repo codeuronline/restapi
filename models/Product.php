@@ -19,6 +19,7 @@ class Product extends Database{
         private $category_name; // nom de la categorie
         private $path;
         private $filename;
+        private const EMPTY="empty.png";  
         public function __construct($data)
         {   extract($data);
             isset($category) ?   $category_id=$category      :   null;
@@ -31,6 +32,7 @@ class Product extends Database{
             // $statut_id=$statut_name;
             // $category_id =$category_name; 
             // $supplier_id=$supplier_name;
+            isset($primary_visual) ? $primary_visual= $primary_visual:$primary_visual=self::EMPTY;
             $primary_visual=$path.$file_name;
             
             $this->id_product = $id_product;
