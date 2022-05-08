@@ -1,5 +1,6 @@
 <?PHP 
-//define("URL", str_replace("products.php", "", (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]")); ?>
+//    define("URL", str_replace("products.php", "", (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]"));
+     ?>
 <!DOCTYPE html>
 
 <html lang="fr">
@@ -39,7 +40,8 @@
                     <a class="nav-link" href="<?=URL ?>products/">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?=URL ?>xlsManager.php">Managers</a>
+                    <a class="nav-link" href="<?=URL ?>views/XLS_form.php">XLS
+                        formulaire</a>
                 </li>
 
 
