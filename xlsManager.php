@@ -15,7 +15,7 @@ $sheet = $spreadsheet->getActiveSheet();
 // $sheet->setCellValue('B2', 'Hello World4 !');
 $lastRow = $sheet->getHighestDataRow();
 $lastCol = $sheet->getHighestDataColumn();
-//anticipe le decalage de la derniere colonne avec le decalage A-> 1 avec le tableau +1
+//anticipe le decalage de la derniere colonne avec le decalage A-> 1 dans le tableau qui commence a 0
 $lastCol++;
 var_dump($lastRow);
 var_dump($lastCol);
