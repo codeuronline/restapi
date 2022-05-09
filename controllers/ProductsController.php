@@ -55,7 +55,8 @@ class ProductsController{
         
     }
     public function loadProductRequest($value){
-        $this->productManager->loadProductRequest($value);
+        $products=$this->productManager->loadProductRequest($value);
+        var_dump($products);
         require "view/afficherAllproduct.view.php";
     }
    
