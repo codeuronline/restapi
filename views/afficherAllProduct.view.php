@@ -36,6 +36,7 @@ ob_start();
     <tbody>
         <?php
         error_log(print_r($products,1));
+        var_dump(count($products));
         foreach ($products as $product) : ?>
         <!-- //$videos = $videoManager->getVideos(); -->
         <tr>

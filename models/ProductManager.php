@@ -52,7 +52,7 @@ class ProductManager extends Database{
 
 
     public function getProductById($id){
-        //on utilise la boucle for et on part un zero car c'est un tableau
+        //on utilise la boucle for et on part de zero car c'est un tableau
         for ($i = 0; $i < count($this->products); $i++) {
             if ($this->products[$i]->getId_product() === $id) {
             return $this->products[$i];
