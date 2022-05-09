@@ -18,7 +18,22 @@ class ProductManager extends Database{
     }
     
 
+    public function loadProductRequest($value){
+        $req=  $this->getPDO()->prepare("SELECT *,category_name,statut_name,supplier_name,path,file_name FROM products 
+        INNER JOIN category ON products.category_id=category.id
+        INNER JOIN statut ON products.statut_id=statut.id
+        INNER JOIN suppliers ON products.supplier_id=suppliers.id
+        INNER JOIN assets ON products.primary_visual=assets.id
+        WHERE products.category_id=$value");
+        $req->execute();
+        $mesProducts = $req->fetchAll(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+        foreach($mesProducts as $product){
+            $this->ajoutProduct(new Product($product));
+    }
     
+}    
+
     public function chargementProducts(){
         $req = $this->getPDO()->prepare("SELECT *,category_name,statut_name,supplier_name,path,file_name FROM products 
         INNER JOIN category ON products.category_id=category.id

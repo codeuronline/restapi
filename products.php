@@ -36,6 +36,13 @@ switch ($_SERVER['REQUEST_METHOD']){
                     $productController->afficherProducts();
                 } 
                 break;
+            case 'request';
+                if(!empty($url[1])){
+                    require 'request_category.php';
+                    //$productController->loadProductRequest(($url[1]));
+                }else{
+                    $productController->afficherProducts();
+                }
             case 'products';
                 if(!empty($url[1])){
                 $productController->afficherProduct($url[1]);            

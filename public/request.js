@@ -14,9 +14,24 @@ function request(id_product,statut_id) {
             window.alert('nouveau statut du produit : '+statut_name[statut_id-1])
            // Response
            var response = httpRequest.responseText; 
-     console.log(response);    }
+            console.log(response);    }
      };
      httpRequest.send();
     
 }
-    
+function request_category(id_category) {
+    let httpRequest = new XMLHttpRequest();
+    console.log(id_category);
+    httpRequest.open('GET', 'http://localhost/restapi/request/'+id_category, true);
+    httpRequest.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');//encapsule la requête dans une entête que l'on définit dans une URL
+    httpRequest.onreadystatechange = function() {
+        console.log('id_category->'+id_category);
+        //Si la requête a été reçu (statut 200 : réseau) et 4 : traité
+        if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+                        // Response
+            var response = httpRequest.responseText; 
+            window.alert('nouveau classement par catégorie : '+id_category)
+            console.log(response);    }
+     };
+     httpRequest.send();
+}    

@@ -10,7 +10,23 @@ ob_start();
         <th>CODE</th>
         <th>Description</th>
         <th>Price</th>
-        <th>Categorie</th>
+        <th>
+            <form method="">
+                <select onchange="request_category(this.value)">
+                    <option value="">Categorie</option>
+                    <option value="1">Boulangerie/Pâtisserie</option>
+                    <option value="2">Epicerie Salée</option>
+                    <option value="3">Epicerie sucrée</option>
+                    <option value="4">Boissons</option>
+                    <option value="5">Fromagerie</option>
+                    <option value="6">Poissonnerie</option>
+                    <option value="7">Boucherie</option>
+                    <option value="8">Libre-service</option>
+                    <option value="9">Vente à l'étalage</option>
+                    <option value="10">Tête de gondole</option>
+                </select>
+            </form>
+        </th>
         <th>Statut</th>
         <th>Supplier</th>
         <th>Purchase</th>
@@ -67,6 +83,26 @@ ob_start();
     </tbody>
 </table>
 <a href="<?= URL ?>products/" class="btn btn-success d-block">accueil</a>
+<script>
+function request_category(id_category) {
+    let httpRequest = new XMLHttpRequest();
+    console.log(id_category);
+    httpRequest.open('GET', 'http://localhost/restapi/request/' + id_category, true);
+    httpRequest.setRequestHeader('Content-type',
+        'application/x-www-form-urlencoded'); //encapsule la requête dans une entête que l'on définit dans une URL
+    httpRequest.onreadystatechange = function() {
+        console.log('id_category->' + id_category);
+        //Si la requête a été reçu (statut 200 : réseau) et 4 : traité
+        if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+            // Response
+            var response = httpRequest.responseText;
+            window.alert('nouveau classement par catégorie : ' + id_category)
+            console.log(response);
+        }
+    };
+    httpRequest.send();
+}
+</script>
 <?php
 $content = ob_get_clean();
 $titre = "Liste des produits(All)"; // $videos->getTitre();

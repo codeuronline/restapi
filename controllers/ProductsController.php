@@ -54,6 +54,10 @@ class ProductsController{
      require "view/afficherAllprouct.view.php";
         
     }
+    public function loadProductRequest($value){
+        $this->productManager->loadProductRequest($value);
+        require "view/afficherAllproduct.view.php";
+    }
    
     public function getProductManager(){ return $this->productManager; }
     public function setProductManager($productManager){ $this->productManager = $productManager; return $this;}
