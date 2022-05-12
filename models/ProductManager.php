@@ -19,6 +19,7 @@ class ProductManager extends Database{
     
 
     public function loadProductRequest($value){
+        
         $req=  $this->getPDO()->prepare("SELECT *,category_name,statut_name,supplier_name,path,file_name FROM products 
         INNER JOIN category ON products.category_id=category.id
         INNER JOIN statut ON products.statut_id=statut.id
@@ -27,10 +28,15 @@ class ProductManager extends Database{
         WHERE products.category_id=$value");
         $req->execute();
         $mesProducts = $req->fetchAll(PDO::FETCH_ASSOC);
+        $this->setProducts=[];
+        error_log($mesProducts);
         $req->closeCursor();
         foreach($mesProducts as $product){
             $this->ajoutProduct(new Product($product));
+            
     }
+    error_log("products renvoyés dans la list des products");
+    return $this->products;
     
 }    
 
@@ -250,4 +256,12 @@ class ProductManager extends Database{
             }
            
             
+
+ 
+public function setProducts($products)
+    {
+        $this->products = $products;
+
+        return $this;
+    }
         }

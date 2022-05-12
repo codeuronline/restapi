@@ -12,6 +12,7 @@ switch ($_SERVER['REQUEST_METHOD']){
         // requete GET 
         if (!(empty($_GET['id']))){
         $url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
+            var_dump($url);
         switch ($url[0]) {
             case 'del':
                 var_dump("GET->del");
@@ -37,6 +38,7 @@ switch ($_SERVER['REQUEST_METHOD']){
                 } 
                 break;
             case 'request';
+                    error_log('path request_category');
                 if(!empty($url[1])){
                     require 'request_category.php';
                     //$productController->loadProductRequest(($url[1]));
@@ -44,11 +46,22 @@ switch ($_SERVER['REQUEST_METHOD']){
                     $productController->afficherProducts();
                 }
             case 'products';
+                    if (!empty($url[1])) {
+                        if ($url[1] == "request") {
+                            if (!empty($url[2])) {
+                                $productController->loadProductRequest($url[2]);
+                            } else {
+                                $productController->afficherProducts();
+                            }                            
+                        }
+                    } else {
                 if(!empty($url[1])){
-                $productController->afficherProduct($url[1]);            
+                            $productController->afficherProduct($url[1]);  
+                //$productController->loadProductRequest($url[1]);          
                 } else{ 
                     $productController->afficherProducts();
-                }   
+                        }
+                    }
         break;
         }
     break;
