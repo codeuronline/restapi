@@ -34,68 +34,72 @@ ob_start();
     </thead>
     <tbody>
         <?php
-        error_log(print_r($products, 1));
         foreach ($products as $product) : ?>
 
-            <tr>
-                <td>
-                    <?= $product->getId_product() ?>
-                </td>
-                <td>
-                    <img class="card" src="<?= URL ?><?= (($product->getPrimary_visual() == null) || (empty($product->getPrimary_visual()))) ? "assets/empty.png" : $product->getPrimary_visual() ?>" alt="visuel">
-                </td>
-                <td>
-                    <?= $product->getCode() ?>
-                </td>
-                <td>
-                    <?= $product->getDescription() ?>
-                </td>
-                <td>
-                    <?= $product->getPrice() ?>
-                </td>
-                <td>
-                    <?= $product->getCategory_name() ?>
-                </td>
-                <td>
-                    <?= $product->getStatut_name() ?>
-                </td>
-                <td>
-                    <?= $product->getSupplier_id() ?>
-                </td>
-                <td>
-                    <?= $product->getPurchase_date() ?>
-                </td>
-                <td>
-                    <?= $product->getExpiration_date() ?>
-                </td>
-                <td>
-                    <a href="<?= URL ?>update/<?= $product->getId_product() ?>"><button class="btn btn-primary"><i class="bi bi-upload"></i></button></a>
-                    <a href="<?= URL ?>del/<?= $product->getId_product() ?>"><button class="btn btn-danger" onclick="return confirm('Voulez-vous vraiement supprimer le produit : <?= $product->getDescription() ?> ?')"><i class="bi bi-x-lg"></i></button></a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                <?= $product->getId_product() ?>
+            </td>
+            <td>
+                <img class="card"
+                    src="<?= URL ?><?= (($product->getPrimary_visual() == null) || (empty($product->getPrimary_visual()))) ? "assets/empty.png" : $product->getPrimary_visual() ?>"
+                    alt="visuel">
+            </td>
+            <td>
+                <?= $product->getCode() ?>
+            </td>
+            <td>
+                <?= $product->getDescription() ?>
+            </td>
+            <td>
+                <?= $product->getPrice() ?>
+            </td>
+            <td>
+                <?= $product->getCategory_name() ?>
+            </td>
+            <td>
+                <?= $product->getStatut_name() ?>
+            </td>
+            <td>
+                <?= $product->getSupplier_id() ?>
+            </td>
+            <td>
+                <?= $product->getPurchase_date() ?>
+            </td>
+            <td>
+                <?= $product->getExpiration_date() ?>
+            </td>
+            <td>
+                <a href="<?= URL ?>update/<?= $product->getId_product() ?>"><button class="btn btn-primary"><i
+                            class="bi bi-upload"></i></button></a>
+                <a href="<?= URL ?>del/<?= $product->getId_product() ?>"><button class="btn btn-danger"
+                        onclick="return confirm('Voulez-vous vraiement supprimer le produit : <?= $product->getDescription() ?> ?')"><i
+                            class="bi bi-x-lg"></i></button></a>
+            </td>
+        </tr>
         <?php endforeach ?>
     </tbody>
 </table>
 <a href="<?= URL ?>products/" class="btn btn-success d-block">accueil</a>
 <script>
-    function request_category(id_category) {
-        let httpRequest = new XMLHttpRequest();
-        console.log(id_category);
-        httpRequest.open('GET', 'http://localhost/restapi/request/' + id_category, true);
-        httpRequest.setRequestHeader('Content-type',
-            'application/x-www-form-urlencoded'); //encapsule la requête dans une entête que l'on définit dans une URL
-        httpRequest.onreadystatechange = function() {
-            console.log('id_category->' + id_category);
-            //Si la requête a été reçu (statut 200 : réseau) et 4 : traité
-            if (httpRequest.readyState == 4 && httpRequest.status == 200) {
-                // Response
-                var response = httpRequest.responseText;
-                window.alert('nouveau classement par catégorie : ' + id_category)
-                console.log(response);
-            }
-        };
-        httpRequest.send();
-    }
+function request_category(id_category) {
+    let httpRequest = new XMLHttpRequest();
+    console.log(id_category);
+    httpRequest.open('GET', 'http://localhost/restapi/request/' + id_category, true);
+    httpRequest.setRequestHeader('Content-type',
+        'application/x-www-form-urlencoded'); //encapsule la requête dans une entête que l'on définit dans une URL
+    httpRequest.onreadystatechange = function() {
+        console.log('id_category->' + id_category);
+        //Si la requête a été reçu (statut 200 : réseau) et 4 : traité
+        if (httpRequest.readyState == 4 && httpRequest.status == 200) {
+            // Response
+            var response = httpRequest.responseText;
+            window.alert('nouveau classement par catégorie : ' + id_category)
+            console.log(response);
+        }
+    };
+    httpRequest.send();
+}
 </script>
 <?php
 $content = ob_get_clean();

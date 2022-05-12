@@ -29,13 +29,12 @@ class ProductManager extends Database{
         $req->execute();
         $mesProducts = $req->fetchAll(PDO::FETCH_ASSOC);
         $this->setProducts=[];
-        error_log($mesProducts);
+        error_log(count($mesProducts));
         $req->closeCursor();
         foreach($mesProducts as $product){
             $this->ajoutProduct(new Product($product));
             
     }
-    error_log("products renvoyés dans la list des products");
     return $this->products;
     
 }    

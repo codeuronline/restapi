@@ -38,10 +38,11 @@ switch ($_SERVER['REQUEST_METHOD']){
                 } 
                 break;
             case 'request';
-                    error_log('path request_category');
+                    // error_log('path request_category');
                 if(!empty($url[1])){
+                    error_log('path request_category');
                     require 'request_category.php';
-                    //$productController->loadProductRequest(($url[1]));
+        
                 }else{
                     $productController->afficherProducts();
                 }
