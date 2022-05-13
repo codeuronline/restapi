@@ -81,7 +81,8 @@ ob_start();
     </tbody>
 </table>
 <a href="<?= URL ?>products/" class="btn btn-success d-block">accueil</a>
-<script>
+<script src="../public//request.js"></script>
+<!-- <script>
 function request_category(id_category) {
     let httpRequest = new XMLHttpRequest();
     console.log(id_category);
@@ -100,7 +101,7 @@ function request_category(id_category) {
     };
     httpRequest.send();
 }
-</script>
+</script> -->
 <?php
 $content = ob_get_clean();
 $titre = "Liste des produits(All)"; // $videos->getTitre();
