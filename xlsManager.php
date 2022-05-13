@@ -28,7 +28,8 @@ for ($j = 2; $j < $lastRow; $j++) {
         }
         $allProducts[]=$aProduct;
     }
-for ($z=0;$z<count($allProducts);$z++){
+
+    for ($z=0;$z<count($allProducts);$z++){
     // $allProductsLabel[$z]["id_product"]=$allProducts[$z][0];
     $allProductsLabels[$z]["code"]=$allProducts[$z][1];
     $allProductsLabels[$z]["description"]=$allProducts[$z][2];

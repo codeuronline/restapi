@@ -29,7 +29,8 @@ class ProductManager extends Database{
         $req->execute();
         $mesProducts = $req->fetchAll(PDO::FETCH_ASSOC);
         $this->setProducts=[];
-        error_log(count($mesProducts));
+        error_log("***********************************************");
+        error_log($value." correspondants a :".count($mesProducts));
         $req->closeCursor();
         foreach($mesProducts as $product){
             $this->ajoutProduct(new Product($product));
