@@ -1,8 +1,10 @@
 <?php
-parse_str(file_get_contents('php://input'), $url);
-error_log("traitement de la requete categorie avec le parametre ".$url[1]);
-error_log(print_r($url[1]),1);
-error_log(print_r($url[0]),1);
+//parse_str(file_get_contents('php://input'), $url);
+error_log("---------------------------------");
+error_log("fichier request category");
+$urlrequest=explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
+error_log("urlrequest 0: ".print_r($urlrequest[0]),1);
+error_log(print_r($urlrequest[1]),1);
 //error_log(print_r($urlrequest[2]),1);
 
 //error_log($url);
