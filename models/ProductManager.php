@@ -38,6 +38,7 @@ class ProductManager extends Database{
     }
     return $this->products;
     
+    
 }    
 
     public function chargementProducts(){
@@ -50,7 +51,7 @@ class ProductManager extends Database{
         
         $req->execute();
         $mesProducts = $req->fetchAll(PDO::FETCH_ASSOC);
-        $req->closeCursor();
+         $req->closeCursor();
         foreach($mesProducts as $product){
             $this->ajoutProduct(new Product($product));
     }

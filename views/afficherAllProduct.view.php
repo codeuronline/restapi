@@ -34,6 +34,7 @@ ob_start();
     </thead>
     <tbody>
         <?php
+        error_log("nombre de produits".count($products));
         foreach ($products as $product) : ?>
 
         <tr>
@@ -87,18 +88,19 @@ function request_category(id_category) {
     console.log(id_category);
     httpRequest.open('GET', 'http://localhost/restapi/request/' + id_category, true);
     httpRequest.setRequestHeader('Content-type',
-        'application/x-www-form-urlencoded'); //encapsule la requête dans une entête que l'on définit dans une URL
+        'application/x-www-form-urlencoded'); //encapsule la requête dans une entête
+    //      que l 'on définit dans une 
     httpRequest.onreadystatechange = function() {
         console.log('id_category->' + id_category);
         //Si la requête a été reçu (statut 200 : réseau) et 4 : traité
         if (httpRequest.readyState == 4 && httpRequest.status == 200) {
             // Response
             var response = httpRequest.responseText;
-            window.alert('nouveau classement par catégorie : ' + id_category)
+            window.alert('nouveau classement par catégorie : ' + id_category);
             console.log(response);
         }
-    };
-    httpRequest.send();
+        httpRequest.send();
+    }
 }
 </script>
 <?php

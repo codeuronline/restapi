@@ -4,8 +4,9 @@ require 'vendor/autoload.php';
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
+extract($_POST);
 //$spreadsheet = new Spreadsheet();
-$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load("put/micromarket.xlsx");
+$spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load("put/" . $filename);
 
 $sheet = $spreadsheet->getActiveSheet();
 // $sheet = $spreadsheet->getActiveSheet();
@@ -14,11 +15,13 @@ $sheet = $spreadsheet->getActiveSheet();
 // $sheet->setCellValue('B1', 'Hello World3 !');
 // $sheet->setCellValue('B2', 'Hello World4 !');
 $lastRow = $sheet->getHighestDataRow();
+
 $lastCol = $sheet->getHighestDataColumn();
 //anticipe le decalage de la derniere colonne avec le decalage A-> 1 dans le tableau qui commence a 0
 $lastCol++;
 var_dump($lastRow);
 var_dump($lastCol);
+if ($lastCol == "K") {
 $allProducts=[];
 //anticipe le decalage des produits commençant à la ligne 2
 for ($j = 2; $j < $lastRow; $j++) {
@@ -37,7 +40,7 @@ for ($j = 2; $j < $lastRow; $j++) {
     $allProductsLabels[$z]["category_id"]=$allProducts[$z][4];
     $allProductsLabels[$z]["statut_id"]=$allProducts[$z][5];
     $allProductsLabels[$z]["supplier_name"]=$allProducts[$z][6];
-    //tester si le fournisseur existe si non le creer
+    // tester si le fournisseur existe si non le creer
     $allProductsLabels[$z]["purchase_date"]=gmdate("d-m-Y H:i:s",($allProducts[$z][7] - 25569) * 86400);
     $allProductsLabels[$z]["expiration_date"]=gmdate("d-m-Y H:i:s",($allProducts[$z][8] - 25569) * 86400);
     $allProductsLabels[$z]["visual_primary"]=$allProducts[$z][9];
@@ -55,6 +58,10 @@ for ($j = 2; $j < $lastRow; $j++) {
    
 var_dump($allProductsLabels);
 var_dump("Nombre d'enregistrement importé dans l'objet : ".count($allProductsLabels));
+}else{
+    
+        echo "nombre de colonne erroné";}
+
 
 // $writer = new Xlsx($spreadsheet);
 // $writer->save("put/".date("Y_m_d_h_i")."_treated.xlsx");
