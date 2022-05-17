@@ -7,11 +7,15 @@ error_log(print_r($url[0]),1);
 //error_log(print_r($urlrequest[2]),1);
 
 //error_log($url);
-if (isset($urlRequest[2])){
-    $productController->loadProductRequest($url[2]);
-}else{
-    $productController->loadProductRequest($url[1]);
+if (isset($urlRequest[3])) {
+        $productController->loadProductRequest($urlRequest[3]);
+    if (isset($urlRequest[2])){
+        $productController->loadProductRequest($url[2]);
+    }else{
+        $productController->loadProductRequest($url[1]);
+    }
 }
+
  $answerPHP= true;
      
 // requete d'update 
