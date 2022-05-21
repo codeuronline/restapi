@@ -50,7 +50,10 @@ switch ($_SERVER['REQUEST_METHOD']){
                     if (!empty($url[1])) {
                         if ($url[1] == "request") {
                             if (!empty($url[2])) {
-                                $productController->loadProductRequest($url[2]);
+                                error_log($url[2]);
+                                // $productController->loadProductRequest($url[2]);
+                                require 'request_category.php';
+                                $productController->afficherProducts();
                             } else {
                                 $productController->afficherProducts();
                             }                            
@@ -88,11 +91,11 @@ switch ($_SERVER['REQUEST_METHOD']){
                 //on fait rien
                 $productController->afficherProducts();
             } else {
-                //ici j'affiche 1seul produit
+                //ici on supprimer le produit definit dans l'url
                 $productController->supprimerProduct($url[1]);
             }
         } else {
-            //on  fait rien et on affiche la liste de produits
+            //on fait rien et on affiche la liste de produits
             $productController->afficherProducts();
         }
         var_dump("suppression du produit");

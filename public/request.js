@@ -22,7 +22,8 @@ function request(id_product,statut_id) {
 function request_category(id_category) {
     let httpRequest = new XMLHttpRequest();
     console.log(id_category);
-    httpRequest.open('GET', 'http://localhost/restapi/request/' + id_category, true);
+    httpRequest.open('GET', 'http://localhost/restapi/products/request/' + id_category, true);
+    window.alert("http://localhost/restapi/products/request/" + id_category);
     httpRequest.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');//encapsule la requête dans une entête que l'on définit dans une URL
     httpRequest.onreadystatechange = function () {
         console.log('id_category->' + id_category);
