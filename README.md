@@ -1,11 +1,11 @@
 ## RESAPI
 ### Creation de la base de donnee et injection des elements assets
-### Gestion des méthodes 
-#### De creation méthode POST
-#### De lecture méthode GET
-#### D'update méthode PUT
-#### D'effacement méthode DELETE
-#### De duplication d'un produit methode DUPLICATE
+### Gestion des méthodes via MVC
+#### -> Création méthode POST
+#### -> Lecture méthode GET
+#### -> Update méthode PUT
+#### -> Effacement méthode DELETE
+#### -> Duplication d'un produit methode DUPLICATE
 ### Creation de l'interface de visualisation de l'ensemble des produits
 ### Interaction sur un produit au niveau de la suppression et la mise a jour
 ### Mise à jour disponible au niveau du statut par  requete ajax
