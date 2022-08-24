@@ -1,4 +1,4 @@
-## RESAPI
+## RESTAPI
 ### Creation de la base de donnee et injection des elements assets
 ### Gestion des méthodes via MVC
 #### -> Création méthode POST
