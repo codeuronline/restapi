@@ -1,5 +1,5 @@
 # #commentaire :ici je demande l'activation la réécriture d'url
- RewriteEngine On
+RewriteEngine On
 
 # #commentaire : eviter de lister les fichiers directements via la barre d'url ( sécurité )
 # #commentaire : f = fichier

@@ -12,6 +12,7 @@ switch ($_SERVER['REQUEST_METHOD']){
         // requete GET 
         if (!(empty($_GET['id']))){
         $url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
+            var_dump($url);
         switch ($url[0]) {
             case 'del':
                 //var_dump("GET->del");
@@ -37,18 +38,34 @@ switch ($_SERVER['REQUEST_METHOD']){
                 } 
                 break;
             case 'request';
+                    // error_log('path request_category');
                 if(!empty($url[1])){
+                    error_log('path request_category');
                     require 'request_category.php';
-                    //$productController->loadProductRequest(($url[1]));
+        
                 }else{
                     $productController->afficherProducts();
                 }
             case 'products';
+                    if (!empty($url[1])) {
+                        if ($url[1] == "request") {
+                            if (!empty($url[2])) {
+                                error_log($url[2]);
+                                // $productController->loadProductRequest($url[2]);
+                                require 'request_category.php';
+                                $productController->afficherProducts();
+                            } else {
+                                $productController->afficherProducts();
+                            }                            
+                        }
+                    } else {
                 if(!empty($url[1])){
-                $productController->afficherProduct($url[1]);            
+                            $productController->afficherProduct($url[1]);  
+                //$productController->loadProductRequest($url[1]);          
                 } else{ 
                     $productController->afficherProducts();
-                }   
+                        }
+                    }
         break;
         }
     break;
@@ -74,11 +91,11 @@ switch ($_SERVER['REQUEST_METHOD']){
                 //on fait rien
                 $productController->afficherProducts();
             } else {
-                //ici j'affiche 1seul produit
+                //ici on supprimer le produit definit dans l'url
                 $productController->supprimerProduct($url[1]);
             }
         } else {
-            //on  fait rien et on affiche la liste de produits
+            //on fait rien et on affiche la liste de produits
             $productController->afficherProducts();
         }
         //var_dump("suppression du produit");

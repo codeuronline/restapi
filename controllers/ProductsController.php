@@ -55,9 +55,16 @@ class ProductsController{
         
     }
     public function loadProductRequest($value){
+        error_log("In controller -> loadproductRequest with  parameter:".$value);
+        $products=[];
         $products=$this->productManager->loadProductRequest($value);
+<<<<<<< HEAD
         //var_dump($products);
         require "views/afficherAllproduct.view.php";
+=======
+        error_log("chargement des product(S)");
+        require "views/afficherRequestAllByCategory.view.php";
+>>>>>>> 37e0041308ee98b494ab2653bfde69b7554495b6
     }
 
     public function getProductManager(){ return $this->productManager; }

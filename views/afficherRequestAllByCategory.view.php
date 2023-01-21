@@ -34,7 +34,7 @@ ob_start();
     </thead>
     <tbody>
         <?php
-        error_log("nombre de produits".count($products));
+        error_log("fichier afficherRequestallByCategory nombre de produits injecté : ".count($products));
         foreach ($products as $product) : ?>
 
         <tr>
@@ -43,7 +43,7 @@ ob_start();
             </td>
             <td>
                 <img class="card"
-                    src="<?= URL ?><?= (($product->getPrimary_visual()==null) || (empty($product->getPrimary_visual() )))?"assets/empty.png":$product->getPrimary_visual() ?>"
+                    src="<?= URL ?><?= (($product->getPrimary_visual() == null) || (empty($product->getPrimary_visual()))) ? "assets/empty.png" : $product->getPrimary_visual() ?>"
                     alt="visuel">
             </td>
             <td>
@@ -82,26 +82,25 @@ ob_start();
     </tbody>
 </table>
 <a href="<?= URL ?>products/" class="btn btn-success d-block">accueil</a>
-<script src="http://localhost/restapi/public/request.js"></script>
+<script src="http://localhost/restapi/public/request.js"></script> -->
 <!-- <script>
 function request_category(id_category) {
     let httpRequest = new XMLHttpRequest();
     console.log(id_category);
     httpRequest.open('GET', 'http://localhost/restapi/products/request/' + id_category, true);
     httpRequest.setRequestHeader('Content-type',
-        'application/x-www-form-urlencoded'); //encapsule la requête dans une entête
-    //      que l 'on définit dans une 
+        'application/x-www-form-urlencoded'); //encapsule la requête dans une entête que l'on définit dans une URL
     httpRequest.onreadystatechange = function() {
         console.log('id_category->' + id_category);
         //Si la requête a été reçu (statut 200 : réseau) et 4 : traité
         if (httpRequest.readyState == 4 && httpRequest.status == 200) {
             // Response
             var response = httpRequest.responseText;
-            window.alert('nouveau classement par catégorie : ' + id_category);
+            window.alert('nouveau classement par catégorie : ' + id_category)
             console.log(response);
         }
-        httpRequest.send();
-    }
+    };
+    httpRequest.send();
 }
 </script> -->
 <?php
