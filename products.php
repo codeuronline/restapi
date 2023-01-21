@@ -14,18 +14,18 @@ switch ($_SERVER['REQUEST_METHOD']){
         $url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
         switch ($url[0]) {
             case 'del':
-                var_dump("GET->del");
+                //var_dump("GET->del");
                 if (!empty($url[1])){
-                    var_dump($url[1]);
+                    //var_dump($url[1]);
                     $productController->supprimerProduct($url[1]);
-                                   
+
                 } else { 
-                    var_dump("GET->del->noid");
+                    //var_dump("GET->del->noid");
                 }
                 $productController->afficherProducts();        
                 break;
             case 'update':
-                var_dump("<GET->update");
+                //var_dump("<GET->update");
                     if (!empty($url[1])){
                     // $productController->modificationProductRequest($url[1]);
                     $productController->modifierProduct($url[1]);
@@ -57,11 +57,11 @@ switch ($_SERVER['REQUEST_METHOD']){
         $POST = []; //tableau qui va contenir les données reçues à inserer
         parse_str(file_get_contents('php://input'), $POST);
         $productController->ajoutProduct($POST);
-         break;
+        break;
     case "PUT": 
         $_PUT = []; //tableau qui va contenir les données reçues à modifier
         parse_str(file_get_contents('php://input'), $_PUT);
-        var_dump("mise à jour du produit");
+        //var_dump("mise à jour du produit");
         $productController->modifierProductPut($_PUT,$id);
         header('Location: '.URL.'products');
         break;
@@ -81,13 +81,13 @@ switch ($_SERVER['REQUEST_METHOD']){
             //on  fait rien et on affiche la liste de produits
             $productController->afficherProducts();
         }
-        var_dump("suppression du produit");
+        //var_dump("suppression du produit");
         header('Location: '.URL.'products');
         break;
     case "DUPLICATE":
         $DUPLICATE = [];
         parse_str(file_get_contents('php://input'), $DUPLICATE);
-        var_dump($DUPLICATE);
+        //var_dump($DUPLICATE);
         if (!(empty($_GET['id']))) {
             $url = explode("/", filter_var($_GET['id']), FILTER_SANITIZE_URL);
             if (empty($url[1])) {
@@ -101,7 +101,7 @@ switch ($_SERVER['REQUEST_METHOD']){
             //on fait rien et on affiche la liste de produits
             $productController->afficherProducts();
         }
-        var_dump("Produit dupliquer");
+        //var_dump("Produit dupliquer");
         header('Location: '.URL.'products');
         break;
     }   

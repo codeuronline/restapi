@@ -22,7 +22,7 @@ class ProductsController{
     public function afficherProduct($id){
 
         $product= $this->productManager->getproductById($id);
-        require "views/afficherProduct.view.php";    
+        //require "views/afficherProduct.view.php";    
     }
 
     public function ajoutProduct($data){
@@ -56,10 +56,10 @@ class ProductsController{
     }
     public function loadProductRequest($value){
         $products=$this->productManager->loadProductRequest($value);
-        var_dump($products);
+        //var_dump($products);
         require "views/afficherAllproduct.view.php";
     }
-   
+
     public function getProductManager(){ return $this->productManager; }
     public function setProductManager($productManager){ $this->productManager = $productManager; return $this;}
 }
